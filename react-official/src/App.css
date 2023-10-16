@@ -34,7 +34,9 @@ Index
     border-radius: 5px;
   }
 
-
+  #root .game-mode {
+    cursor: pointer;
+  }
 
   /*
   ----------------------
@@ -69,10 +71,11 @@ Index
     padding: 5px;
     color: white;
     border-radius: 3px;
-}
+    cursor: pointer;
+  }
 
-.menu-wrap .menu-item a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-}
+  .menu-wrap .menu-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }

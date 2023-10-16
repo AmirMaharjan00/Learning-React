@@ -5,7 +5,7 @@ export default function Module( props ) {
     return (
         <>
             <div className="end-game">
-                <span className="end-game-label">{ props.label }</span>
+                <span className="end-game-label game-mode">{ props.label }</span>
             </div>
         </>
     );

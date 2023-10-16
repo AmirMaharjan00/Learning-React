@@ -3,12 +3,11 @@ import Module from './Module';
 
 export default function Games() {
     return (
-        <>
-        <h1>This is Game menu</h1>
+      <>
         <h1>Welcome to Tic Tac Toe</h1>
         <div className="game">
           <div className="start-game">
-            <span className="start-game-label">Start Game</span>
+            <span className="start-game-label game-mode">Start Game</span>
             <div className="players">
               <form action="app.js" method="post">
                 <p>
@@ -25,6 +24,6 @@ export default function Games() {
           </div>
           <Module/>
         </div>
-        </>
+      </>
     );
 }
