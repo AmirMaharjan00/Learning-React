@@ -5,8 +5,8 @@ export default function Menu() {
         <>
             <div className="menu-wrap">
                 <ul className="menu">
-                    <li className="menu-item"><a href="">Home</a></li>
-                    <li className="menu-item"><a href="">Games</a></li>
+                    <li className="menu-item"><a href="index.html">Home</a></li>
+                    <li className="menu-item"><a href="games.html">Games</a></li>
                     <li className="menu-item"><a href="">Practices</a></li>
                 </ul>
                 <p className='search-wrap'>

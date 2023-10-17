@@ -17,10 +17,6 @@ Index
     padding: 10px;
     color: white;
   }
-  
-  #root .players{
-    display: none;
-  }
 
   #root .game {
     display: flex;
@@ -79,3 +75,17 @@ Index
     color: white;
     font-size: 16px;
   }
+
+  /*
+  -------------------------
+  GAME BOARD
+  -------------------------
+  */
+    .game-board {
+      margin-top: 30px;
+    }
+
+    .game-board .game-board-data {
+      border: 1px solid black;
+      padding: 30px;
+    }
