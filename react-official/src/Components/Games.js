@@ -5,14 +5,22 @@ let playerOne, playerTwo
 export default function Games() {
   const [ count, SetCount ] = useState(0);
   
-  // for Start Game
+  // Start the Game
   const startGame = () => {
     if( {count}.count ) {
       SetCount(0)
     } else {
       SetCount(1)
     }
+
+    // let gameBoard = document.getElementsByClassName('game-board')
+    // if( {count} ) {
+    //   gameBoard[0].style.display = ''
+    // } else {
+    //   gameBoard[0].style.display = 'none'
+    // }
   }
+
   let content
   content = {count}.count ? <PlayerDiv/> : '';
 
@@ -23,24 +31,80 @@ export default function Games() {
         <div className="start-game">
           <span className="start-game-label game-mode" onClick={startGame}>Start Game</span>
           { content }
-          <GameBoard/>
         </div>
-        <Module/>
+        <GameReset/>
+        <EndGame/>
+      </div>
+      <GameBoard/>
+    </>
+  );
+}
+
+// Reset the Game
+const GameReset = () => {
+  const resetGame = () => {
+    let tableDate = document.getElementsByClassName('game-board-data')
+    for( let i = 0; i < tableDate.length; i++ ) {
+      tableDate[i].innerHTML = ''
+    }
+  }
+
+  return(
+    <div className='game-reset'>
+      <span className='game-reset-label' onClick={resetGame}>Reset Game</span>
+    </div>
+  );
+}
+
+// End the Game
+const EndGame = ( props ) => {
+  const [ endGameVar, setEndGameVar ] = useState( false );
+  const endGame = () => {
+    if( { endGameVar } ) {
+      setEndGameVar( false )
+    } else {
+      setEndGameVar( true )
+    }
+
+    let gameBoard = document.getElementsByClassName('game-board')
+    console.log( gameBoard )
+    if( {endGameVar} ) {
+      gameBoard[0].style.display = 'none'
+    } else {
+      gameBoard[0].style.display = 'block'
+    }
+  }
+  return (
+    <>
+      <div className="end-game">
+        <span className="end-game-label game-mode" onClick={ endGame }>{ props.label }</span>
       </div>
     </>
   );
 }
 
+EndGame.propsTypes = {
+  label: 'End Game'
+}
+
+EndGame.defaultProps = {
+  label: 'End Game'
+}
+
+// Get player names
 const PlayerDiv = () => {
   const [ playerOne, setPlayerOne ] = useState('');
   const [ playerTwo, setPlayerTwo ] = useState('');
 
   // For Form Submit
   const FormSubmit = () => {
-    if( { playerOne } != '' && { playerTwo } != '' ) {
-      return true
+    let gameBoard = document.getElementsByClassName('game-board')
+    let playersContainer = document.getElementsByClassName('players')
+    if( { playerOne }.playerOne != '' && { playerTwo }.playerTwo != '' ) {
+      gameBoard[0].style.display = 'table'
+      playersContainer[0].style.display = 'none'
     } else {
-      return false
+      gameBoard[0].style.display = 'none'
     }
   }
 
@@ -61,8 +125,20 @@ const PlayerDiv = () => {
   );
 }
 
+// The Game Board
 let randomNumber = Math.round( Math.random() * 1 )
 const GameBoard = () => {
+  let numberOfRows = 3, numberofColumns = 3, totalCells = numberOfRows * numberofColumns
+  let tableBodyElement = document.getElementsByClassName('game-board-content')
+  // console.log( tableBodyElement.innerHTML = 'amir' )
+  let tableBodyElementChildren
+  for( let i = 1; i <= totalCells; i++ ) {
+    if( i % 3 == 0 ) tableBodyElementChildren += '<tr class="game-board-row">'
+      tableBodyElementChildren += '<td class="game-board-data"></td>'
+    if( i % 3 == 2 ) tableBodyElementChildren += '</tr>'
+  }
+  console.log( tableBodyElementChildren )
+  tableBodyElement.innerHTML = 'amir'
   let element = document.getElementsByClassName('game-board-data')
   let clickCount = 0
   const gameBoardClick = ( event ) => {
@@ -78,34 +154,47 @@ const GameBoard = () => {
 
     clickCount++
     let firstTurn = ( randomNumber ) ? 'Player 1' : 'Player 2';
+    let c1, c2, c3, c4, c5, c6, c7, c8, c9
     if( clickCount % 2 == 0 ) {
       event.target.innerHTML = 'X' // player 1
     } else {
       event.target.innerHTML = 'O' // player 2
     }
 
-    // horizontal
-    // if(  )
+    // Horizontal
+    if( ( c1 && c2 && c3 ) || ( c4 && c5 && c6 ) || ( c7 && c8 && c9 ) ) {
+      console.log( 'You Win' )
+    }
+
+    // Vertical
+    if( ( c1 && c4 && c7 ) || ( c2 && c5 && c8 ) || ( c3 && c6 && c9 ) ) {
+      console.log( 'You Win' )
+    }
+
+    // Diagonal
+    if( ( c1 && c5 && c9 ) || ( c3 && c5 && c7 ) ) {
+      console.log( 'You Win' )
+    }
   }
   return(
     <>
-      <table className="game-board">
+      <table className="game-board" align='center'>
         <tbody className='game-board-content'>
-          <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c1" data-value="">1</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c2" data-value="">2</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c3" data-value="">3</td>
+          {/* <tr className='game-board-row'>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c1" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c2" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c3" data-value=""></td>
           </tr>
           <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c4" data-value="">4</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c5" data-value="">5</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c6" data-value="">6</td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c4" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c5" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c6" data-value=""></td>
           </tr>
           <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c7" data-value="">7</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c8" data-value="">8</td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c9" data-value="">9</td>
-          </tr>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c7" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c8" data-value=""></td>
+            <td className='game-board-data' onClick={gameBoardClick} data-cell="c9" data-value=""></td>
+          </tr> */}
         </tbody>
       </table>
     </>
