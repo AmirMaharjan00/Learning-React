@@ -12,13 +12,6 @@ export default function Games() {
     } else {
       SetCount(1)
     }
-
-    // let gameBoard = document.getElementsByClassName('game-board')
-    // if( {count} ) {
-    //   gameBoard[0].style.display = ''
-    // } else {
-    //   gameBoard[0].style.display = 'none'
-    // }
   }
 
   let content
@@ -67,7 +60,6 @@ const EndGame = ( props ) => {
     }
 
     let gameBoard = document.getElementsByClassName('game-board')
-    console.log( gameBoard )
     if( {endGameVar} ) {
       gameBoard[0].style.display = 'none'
     } else {
@@ -101,13 +93,12 @@ const PlayerDiv = () => {
     let gameBoard = document.getElementsByClassName('game-board')
     let playersContainer = document.getElementsByClassName('players')
     if( { playerOne }.playerOne != '' && { playerTwo }.playerTwo != '' ) {
-      gameBoard[0].style.display = 'table'
-      playersContainer[0].style.display = 'none'
+        gameBoard[0].style.display = 'table'
+        playersContainer[0].style.display = 'none'
     } else {
       gameBoard[0].style.display = 'none'
     }
   }
-
   return(
     <div className="players" id="players">
       <form action="" className="player-form" id="player-form">
@@ -120,81 +111,53 @@ const PlayerDiv = () => {
           <input type="text" name="player_two" id="player_two" value={playerTwo} onChange={(e) => setPlayerTwo( e.target.value )}/>
         </p>
       </form>
-      <button onClick={FormSubmit}>Submit</button>
+      <button onClick={ FormSubmit }>Submit</button>
     </div>
   );
 }
 
 // The Game Board
 let randomNumber = Math.round( Math.random() * 1 )
-const GameBoard = () => {
+const GameBoard = ( event ) => {
+  // gameboard table creation
   let numberOfRows = 3, numberofColumns = 3, totalCells = numberOfRows * numberofColumns
   let tableBodyElement = document.getElementsByClassName('game-board-content')
-  // console.log( tableBodyElement.innerHTML = 'amir' )
-  let tableBodyElementChildren
-  for( let i = 1; i <= totalCells; i++ ) {
-    if( i % 3 == 0 ) tableBodyElementChildren += '<tr class="game-board-row">'
-      tableBodyElementChildren += '<td class="game-board-data"></td>'
-    if( i % 3 == 2 ) tableBodyElementChildren += '</tr>'
-  }
-  console.log( tableBodyElementChildren )
-  tableBodyElement.innerHTML = 'amir'
-  let element = document.getElementsByClassName('game-board-data')
-  let clickCount = 0
-  const gameBoardClick = ( event ) => {
-    // const [ c1, setC1 ] = useState('');
-    // const [ c2, setC2 ] = useState('');
-    // const [ c3, setC3 ] = useState('');
-    // const [ c4, setC4 ] = useState('');
-    // const [ c5, setC5 ] = useState('');
-    // const [ c6, setC6 ] = useState('');
-    // const [ c7, setC7 ] = useState('');
-    // const [ c8, setC8 ] = useState('');
-    // const [ c9, setC9 ] = useState('');
-
-    clickCount++
-    let firstTurn = ( randomNumber ) ? 'Player 1' : 'Player 2';
-    let c1, c2, c3, c4, c5, c6, c7, c8, c9
-    if( clickCount % 2 == 0 ) {
-      event.target.innerHTML = 'X' // player 1
-    } else {
-      event.target.innerHTML = 'O' // player 2
-    }
-
-    // Horizontal
-    if( ( c1 && c2 && c3 ) || ( c4 && c5 && c6 ) || ( c7 && c8 && c9 ) ) {
-      console.log( 'You Win' )
-    }
-
-    // Vertical
-    if( ( c1 && c4 && c7 ) || ( c2 && c5 && c8 ) || ( c3 && c6 && c9 ) ) {
-      console.log( 'You Win' )
-    }
-
-    // Diagonal
-    if( ( c1 && c5 && c9 ) || ( c3 && c5 && c7 ) ) {
-      console.log( 'You Win' )
+  let tableBodyElementChildren = ''
+  let tableRowElement = 1, tableColumnElement, tableDiagonalElement
+  for( let i = 0; i < totalCells; i++ ) {
+    tableColumnElement = ( i % numberofColumns ) + 1
+    tableDiagonalElement = ( ( tableRowElement === tableColumnElement ) || tableRowElement === 1 && tableColumnElement === 3 ) ? 1 : 0
+    if( i % numberOfRows == 0 ) tableBodyElementChildren += '<tr class="game-board-row">'
+      tableBodyElementChildren += "<td class='game-board-data' data-row='"+ tableRowElement +"' data-column='"+ tableColumnElement +"' data-diagonal='"+ tableDiagonalElement +"'></td>"
+    if( i % numberOfRows == 2 ) {
+      tableBodyElementChildren += '</tr>'
+      tableRowElement++
     }
   }
+  if( tableBodyElement.length > 0 ) tableBodyElement[0].innerHTML = tableBodyElementChildren
+
+  // Gameboard cell on click
+  let gameBoardElement = document.getElementsByClassName('game-board-data')
+  if( gameBoardElement.length > 0 ) {
+    let clickCount = 0
+    for( let i = 0; i < gameBoardElement.length; i++ ) {
+      gameBoardElement[i].addEventListener('click', function( event ){
+        clickCount++
+        let firstTurn = ( randomNumber ) ? 'Player 1' : 'Player 2';
+        let c1, c2, c3, c4, c5, c6, c7, c8, c9
+        if( clickCount % 2 == 0 ) {
+          event.target.innerHTML = 'X' // player 1
+        } else {
+          event.target.innerHTML = 'O' // player 2
+        }
+      })
+    }
+  }
+
   return(
     <>
       <table className="game-board" align='center'>
         <tbody className='game-board-content'>
-          {/* <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c1" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c2" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c3" data-value=""></td>
-          </tr>
-          <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c4" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c5" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c6" data-value=""></td>
-          </tr>
-          <tr className='game-board-row'>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c7" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c8" data-value=""></td>
-            <td className='game-board-data' onClick={gameBoardClick} data-cell="c9" data-value=""></td>
-          </tr> */}
         </tbody>
       </table>
     </>
