@@ -1,180 +1,151 @@
 import React, { useState } from 'react';
-import Module from './Module';
+import ReactDOM from 'react-dom/client';
 
-let playerOne, playerTwo
 export default function Games() {
-  const [ count, SetCount ] = useState(0);
-  
-  // Start the Game
-  const startGame = () => {
-    if( {count}.count ) {
-      SetCount(0)
-    } else {
-      SetCount(1)
-    }
-  }
-
-  let content
-  content = {count}.count ? <PlayerDiv/> : '';
-
-  return (
-    <>
-      <h1>Welcome to Tic Tac Toe</h1>
-      <div className="game">
-        <div className="start-game">
-          <span className="start-game-label game-mode" onClick={startGame}>Start Game</span>
-          { content }
-        </div>
-        <GameReset/>
-        <EndGame/>
-      </div>
-      <GameBoard/>
-    </>
-  );
+    return (
+        <>
+            <div className='root-body'>
+                <TicTacToe/>
+            </div>
+        </>
+    );
 }
 
-// Reset the Game
-const GameReset = () => {
-  const resetGame = () => {
-    let tableDate = document.getElementsByClassName('game-board-data')
-    Array.from( tableDate ).forEach(function( currentValue ){
-      currentValue.innerHTML = ''
-      currentValue.dataset.value = ''
-    })
-  }
-
-  return(
-    <div className='game-reset'>
-      <span className='game-reset-label' onClick={ resetGame }>Reset Game</span>
-    </div>
-  );
-}
-
-// End the Game
-const EndGame = ( props ) => {
-  const [ endGameVar, setEndGameVar ] = useState( false );
-  const endGame = () => {
-    if( { endGameVar } ) {
-      setEndGameVar( false )
-    } else {
-      setEndGameVar( true )
-    }
-
-    let gameBoard = document.getElementsByClassName('game-board')
-    if( {endGameVar} ) {
-      gameBoard[0].style.display = 'none'
-    } else {
-      gameBoard[0].style.display = 'block'
-    }
-  }
-  return (
-    <>
-      <div className="end-game">
-        <span className="end-game-label game-mode" onClick={ endGame }>{ props.label }</span>
-      </div>
-    </>
-  );
-}
-
-EndGame.propsTypes = {
-  label: 'End Game'
-}
-
-EndGame.defaultProps = {
-  label: 'End Game'
-}
-
-// Get player names
-const PlayerDiv = () => {
-  const [ playerOne, setPlayerOne ] = useState('');
-  const [ playerTwo, setPlayerTwo ] = useState('');
-
-  // For Form Submit
-  const FormSubmit = () => {
-    let gameBoard = document.getElementsByClassName('game-board')
-    let playersContainer = document.getElementsByClassName('players')
-    if( { playerOne }.playerOne != '' && { playerTwo }.playerTwo != '' ) {
-        gameBoard[0].style.display = 'table'
-        playersContainer[0].style.display = 'none'
-    } else {
-      gameBoard[0].style.display = 'none'
-    }
-  }
-  return(
-    <div className="players" id="players">
-      <form action="" className="player-form" id="player-form">
-        <p>
-          <label htmlFor="player_one">Player 1: </label>
-          <input type="text" name="player_one" value={playerOne} id="player_one" onChange={(e) => setPlayerOne( e.target.value )}/>
-        </p>
-        <p>
-          <label htmlFor="player_two">Player 2: </label>
-          <input type="text" name="player_two" id="player_two" value={playerTwo} onChange={(e) => setPlayerTwo( e.target.value )}/>
-        </p>
-      </form>
-      <button onClick={ FormSubmit }>Submit</button>
-    </div>
-  );
-}
-
-// The Game Board
-let randomNumber = Math.round( Math.random() * 1 )
-const GameBoard = ( event ) => {
-  const [ active, setActive ] = useState( 'notActive' );
-  // gameboard table creation
-  let numberOfRows = 3, numberofColumns = 3, totalCells = numberOfRows * numberofColumns
-  let tableBodyElement = document.getElementsByClassName('game-board-content')
-  let tableBodyElementChildren = ''
-  let tableRowElement = 1, tableColumnElement, tableDiagonalElement
-  for( let i = 0; i < totalCells; i++ ) {
-    tableColumnElement = ( i % numberofColumns ) + 1
-    tableDiagonalElement = ( ( tableRowElement === tableColumnElement ) || ( tableRowElement === 1 && tableColumnElement === 3 ) || ( tableRowElement === 3 && tableColumnElement === 1 ) ) ? 1 : 0
-    if( i % numberOfRows == 0 ) tableBodyElementChildren += '<tr class="game-board-row">'
-      tableBodyElementChildren += "<td class='game-board-data "+ {active}.active +"' data-row='"+ tableRowElement +"' data-column='"+ tableColumnElement +"' data-diagonal='"+ tableDiagonalElement +"' data-value=''></td>"
-    if( i % numberOfRows == 2 ) {
-      tableBodyElementChildren += '</tr>'
-      tableRowElement++
-    }
-  }
-  if( tableBodyElement.length > 0 ) tableBodyElement[0].innerHTML = tableBodyElementChildren
-
-  // Gameboard cell on click
-  let gameBoardElement = document.getElementsByClassName('game-board-data')
-  if( gameBoardElement.length > 0 ) {
-    let clickCount = 0
-    Array.from( gameBoardElement ).forEach(function( currentValue ){
-      currentValue.addEventListener('click', function( event ){
-        let rowElementValue = this.dataset.row, columnElementValue = this.dataset.column, diagonalElementValue = this.dataset.diagonal, valueDataAtribute
-        clickCount++
-        setActive( 'active' )
-        
-        if( clickCount % 2 == 0 ) {
-          event.target.innerHTML = 'X' // player 1
-          this.dataset.value = 'x'
-
-        } else {
-          event.target.innerHTML = 'O' // player 2
-          this.dataset.value = 'o'
-        }
-        valueDataAtribute = this.dataset.value
-        // valueDataAtribute
-        let test = document.getElementsByClassName('game-board-data')
-        Array.from( test ).forEach(function( currentValue ){
-            // for row
-            if( currentValue.dataset.value == valueDataAtribute ) {
-              console.log( currentValue.dataset.value )
+function TicTacToe () {
+    const [ showGameBoard, setShowGameBoard ] = useState('hide');
+    const [ numberOfRow, setNumberOfRow ] = useState(3);
+    const [ numberOfColumn, setNumberOfColumn ] = useState(3);
+    const [ click, setClick ] = useState('notActive')
+    const [ cellElement, setCellElement ] = useState('')
+    
+    const StartGame = () => {
+        const startGameFunc = () => {
+            if( {showGameBoard}.showGameBoard == 'hide' ) {
+                setShowGameBoard('show')
             }
-        })
-      })
-    })
-  }
+        }
+        return (
+            <>
+                <div className='start-game game-action' onClick={startGameFunc}>
+                    <span className='start-game-label'>Start Game</span>
+                </div>
+            </>
+        )
+    }
+    const ResetGame = () => {
+        const resetGameFunc = () => {
+            let gameBoardCellValues = document.getElementsByClassName('column-elements')
+            Array.from( gameBoardCellValues ).forEach(function( currentValue ){
+                currentValue.innerHTML = ''
+                currentValue.dataset.value = ''
+            })
+        }
+        return (
+            <>
+                <div className='reset-game game-action' onClick={resetGameFunc}>
+                    <span className='rest-game-label'>Reset Game</span>
+                </div>
+            </>
+        )
+    }
+    const EndGame = () => {
+        const endGameFunc = () => {
+            if( {showGameBoard}.showGameBoard == 'show' ) {
+                setShowGameBoard('hide')
+            }
+        }
+        return (
+            <>
+                <div className='end-game game-action' onClick={endGameFunc}>
+                    <span className='end-game-label'>End Game</span>
+                </div>
+            </>
+        )
+    }
 
-  return(
-    <>
-      <table className="game-board" align='center'>
-        <tbody className='game-board-content'>
-        </tbody>
-      </table>
-    </>
-  );
+    const GameBoard = ( props ) => {
+        if( {showGameBoard}.showGameBoard == 'hide' ) return;
+        let totalCell = {numberOfRow}.numberOfRow * {numberOfColumn}.numberOfColumn
+        let rowElements = ''
+        let gameBoardElement = document.getElementsByClassName('gameboard')
+        for( let i = 0; i < totalCell; i++ ) {
+            if( i % {numberOfRow}.numberOfRow == 0 ) rowElements += '<div class="row-elements">';
+            if( i % {numberOfRow}.numberOfRow == 0 ) rowElements += {}
+                rowElements += '<div class="column-elements"></div>';
+            if( i % {numberOfRow}.numberOfRow == 2 ) rowElements += '</div>';
+        }
+        // gameBoardElement[0].innerHTML = rowElements
+        let clickCount = 0
+        var getSiblings = function ( elem ) {
+            var siblings = [];
+            var sibling = elem.parentNode.firstChild;
+            var skipMe = elem;
+            for ( ; sibling; sibling = sibling.nextSibling ) 
+               if ( sibling.nodeType == 1 && sibling != skipMe )
+                  siblings.push( sibling );
+            return siblings;
+        }
+        const cellClik = ( event ) => {
+
+            // setting inner html
+            clickCount++
+            if( clickCount % 2 == 0 ) {
+                event.target.innerHTML = 'X'
+                event.target.dataset.value = 'x'
+            } else {
+                event.target.innerHTML = 'O'
+                event.target.dataset.value = 'o'
+            }
+            
+            let clickedValue = event.target.dataset.value
+            let _thisDataSet = event.target.dataset
+            let rowElements = getSiblings(event.target), rowValues = []
+            Array.from( rowElements ).forEach(function( currentValue ){
+                if( currentValue.dataset.value == 'o' ) console.log( 'all values are smae' )
+                // rowValues.push(currentValue.dataset.value)
+            })
+            // console.log( rowValues )
+            // rowValues.forEach(function( currentValue, index ){
+            //     if ( currentValue == 'o' ) console.log( currentValue )
+            // })
+            // console.log( test )
+        }
+        return (
+            <>
+                <div className='gameboard' align="center">
+                    <div className='row-elements'>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
+                    </div>
+                    <div className='row-elements'>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
+                    </div>
+                    <div className='row-elements'>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
+                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <div className='tic-tac-toe-wrap'>
+                <h1>Welcome to Tic Tac Toe</h1>
+                <div className='game'>
+                    <div className='game-action-wrap'>
+                        <StartGame/>
+                        <ResetGame/>
+                        <EndGame/>
+                    </div>
+                    <GameBoard/>
+                </div>
+            </div>
+        </>
+    );
 }

@@ -1,16 +1,12 @@
 import './App.css';
-import Menu from './Components/Menu';
-import Games from './Components/Games';
-import Practices from './Components/Practices';
+import Menu from './Components/Menu'
+import Games from './Components/Games'
 
 function App() {
   return (
-    <>
+    <>      
       <Menu/>
-      <div className="custom-body">
-        <Games/>
-        <Practices/>
-      </div>
+      <Games/>
     </>
   );
 }

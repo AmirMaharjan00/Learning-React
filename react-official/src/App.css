@@ -1,101 +1,108 @@
 /*
----------------------------
-Index
----------------------------
+  ------------------------
+  BODY
+  ------------------------
 */
-  #root .custom-body{
-    margin: 0 100px;
-  }
-
-  #root h1 {
-    text-align: center;
-  }
-
-  #root .start-game .start-game-label{
-    border-radius: 5px;
-    background: green;
-    padding: 10px;
-    color: white;
-  }
-
-  #root .game {
+  #root .nav-menu {
     display: flex;
-    gap: 5px;
-    justify-content: center;
-  }
-
-  #root span.end-game-label{
-    color: white;
-    background: red;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  #root .game-mode {
-    cursor: pointer;
-  }
-
-  #root .game-reset-label {
-    color: white;
-    background: blue;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  /*
-  ----------------------
-  Menu
-  ----------------------
-  */
-  .menu-wrap {
-    display: flex;
-    gap: 500px;
-    background: #10ad10;
     justify-content: space-evenly;
+    background-color: green;
+    padding: 15px 0;
   }
 
-  .menu-wrap ul.menu {
+  #root .root-body {
+    margin: 0 200px;
+  }
+/*
+  -------------------------
+  MENU
+  -------------------------
+*/
+  .nav-menu .menu-list {
     list-style: none;
     display: flex;
     gap: 50px;
+    margin: 0;
   }
 
-  .menu-wrap input#search_button {
-    padding: 5px;
-    width: 110px;
-  }
-
-  .menu-wrap .search-wrap{
-    display: flex;
-    gap: 10px;
-  }
-
-  .menu-wrap .search-wrap label {
-    background: green;
-    padding: 5px;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-
-  .menu-wrap .menu-item a {
+  .nav-menu .menu-list a {
     text-decoration: none;
     color: white;
     font-size: 16px;
   }
+/*
+  -------------------------
+  LIVE SEARCH
+  -------------------------
+*/
+  .nav-menu .live-search {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nav-menu .live-search input {
+    padding: 6px
+  }
+
+  .nav-menu .live-search button {
+    padding: 6px;
+    border: none;
+    border-radius: 3px;
+  }
 
   /*
   -------------------------
-  GAME BOARD
+    TIC TAC TOE
   -------------------------
   */
-    .game-board {
-      margin-top: 30px;
-      display: none;
+    .tic-tac-toe-wrap h1 {
+      text-align: center;
     }
 
-    .game-board .game-board-data {
+    .tic-tac-toe-wrap .game-action-wrap {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .tic-tac-toe-wrap .game-action {
+      padding: 10px;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .tic-tac-toe-wrap .start-game {
+      background: green;
+    }
+
+    .tic-tac-toe-wrap .reset-game {
+      background: blue;
+    }
+
+    .tic-tac-toe-wrap .end-game {
+      background: red;
+    }
+/*
+-------------------------
+  GAMEBOARD
+-------------------------
+*/
+    .gameboard {
+      margin-top: 10px;
+      position: absolute;
+      left: 44%;
+    }
+
+    .gameboard .column-elements {
       border: 1px solid black;
-      padding: 30px;
+      padding: 35px;
+      margin: 1px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .gameboard .row-elements {
+      display: flex;
+      gap: 1px;
     }
