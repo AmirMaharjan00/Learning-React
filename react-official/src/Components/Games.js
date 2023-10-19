@@ -37,14 +37,15 @@ export default function Games() {
 const GameReset = () => {
   const resetGame = () => {
     let tableDate = document.getElementsByClassName('game-board-data')
-    for( let i = 0; i < tableDate.length; i++ ) {
-      tableDate[i].innerHTML = ''
-    }
+    Array.from( tableDate ).forEach(function( currentValue ){
+      currentValue.innerHTML = ''
+      currentValue.dataset.value = ''
+    })
   }
 
   return(
     <div className='game-reset'>
-      <span className='game-reset-label' onClick={resetGame}>Reset Game</span>
+      <span className='game-reset-label' onClick={ resetGame }>Reset Game</span>
     </div>
   );
 }
@@ -119,6 +120,7 @@ const PlayerDiv = () => {
 // The Game Board
 let randomNumber = Math.round( Math.random() * 1 )
 const GameBoard = ( event ) => {
+  const [ active, setActive ] = useState( 'notActive' );
   // gameboard table creation
   let numberOfRows = 3, numberofColumns = 3, totalCells = numberOfRows * numberofColumns
   let tableBodyElement = document.getElementsByClassName('game-board-content')
@@ -126,9 +128,9 @@ const GameBoard = ( event ) => {
   let tableRowElement = 1, tableColumnElement, tableDiagonalElement
   for( let i = 0; i < totalCells; i++ ) {
     tableColumnElement = ( i % numberofColumns ) + 1
-    tableDiagonalElement = ( ( tableRowElement === tableColumnElement ) || tableRowElement === 1 && tableColumnElement === 3 ) ? 1 : 0
+    tableDiagonalElement = ( ( tableRowElement === tableColumnElement ) || ( tableRowElement === 1 && tableColumnElement === 3 ) || ( tableRowElement === 3 && tableColumnElement === 1 ) ) ? 1 : 0
     if( i % numberOfRows == 0 ) tableBodyElementChildren += '<tr class="game-board-row">'
-      tableBodyElementChildren += "<td class='game-board-data' data-row='"+ tableRowElement +"' data-column='"+ tableColumnElement +"' data-diagonal='"+ tableDiagonalElement +"'></td>"
+      tableBodyElementChildren += "<td class='game-board-data "+ {active}.active +"' data-row='"+ tableRowElement +"' data-column='"+ tableColumnElement +"' data-diagonal='"+ tableDiagonalElement +"' data-value=''></td>"
     if( i % numberOfRows == 2 ) {
       tableBodyElementChildren += '</tr>'
       tableRowElement++
@@ -140,18 +142,31 @@ const GameBoard = ( event ) => {
   let gameBoardElement = document.getElementsByClassName('game-board-data')
   if( gameBoardElement.length > 0 ) {
     let clickCount = 0
-    for( let i = 0; i < gameBoardElement.length; i++ ) {
-      gameBoardElement[i].addEventListener('click', function( event ){
+    Array.from( gameBoardElement ).forEach(function( currentValue ){
+      currentValue.addEventListener('click', function( event ){
+        let rowElementValue = this.dataset.row, columnElementValue = this.dataset.column, diagonalElementValue = this.dataset.diagonal, valueDataAtribute
         clickCount++
-        let firstTurn = ( randomNumber ) ? 'Player 1' : 'Player 2';
-        let c1, c2, c3, c4, c5, c6, c7, c8, c9
+        setActive( 'active' )
+        
         if( clickCount % 2 == 0 ) {
           event.target.innerHTML = 'X' // player 1
+          this.dataset.value = 'x'
+
         } else {
           event.target.innerHTML = 'O' // player 2
+          this.dataset.value = 'o'
         }
+        valueDataAtribute = this.dataset.value
+        // valueDataAtribute
+        let test = document.getElementsByClassName('game-board-data')
+        Array.from( test ).forEach(function( currentValue ){
+            // for row
+            if( currentValue.dataset.value == valueDataAtribute ) {
+              console.log( currentValue.dataset.value )
+            }
+        })
       })
-    }
+    })
   }
 
   return(
