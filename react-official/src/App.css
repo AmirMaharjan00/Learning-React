@@ -106,3 +106,52 @@
       display: flex;
       gap: 1px;
     }
+
+     /*
+  -------------------------
+    SNAKE GAME
+  -------------------------
+  */
+  .snake-game-wrap h1 {
+    text-align: center;
+  }
+
+  .snake-game-wrap .gameboard-inner {
+    background-color: black;
+    height: 200px;
+    width: 230px;
+    padding: 3px;
+    position: relative;
+  }
+
+  .snake-game-wrap .game-action-wrap {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .snake-game-wrap .game-action {
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .snake-game-wrap .start-game {
+    background: green;
+  }
+
+  .snake-game-wrap .reset-game {
+    background: blue;
+  }
+
+  .snake-game-wrap .end-game {
+    background: red;
+  }
+
+  .snake-game-wrap .snake {
+    height: 8px;
+    width: 8px;
+    background-color: white;
+    position: absolute;
+  }
