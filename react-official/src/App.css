@@ -51,6 +51,46 @@
   }
 
   /*
+  ------------------------------
+  GAME GALLERY
+  ------------------------------
+  */
+    .games {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .games .game-thumb-wrap {
+      margin: 0;
+      padding: 10px;
+      margin: 0;
+      padding: 10px;
+      box-shadow: 0px 0px 8px -2px black;
+      border-radius: 6px;
+    }
+
+    .games .game-thumb {
+      height: 250px;
+      width: 350px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
+
+    .games .play-label {
+      display: block;
+      background: grey;
+      color: white;
+      text-align: center;
+      padding: 7px;
+      font-size: 17px;
+      font-weight: 600;
+      box-shadow: 0 0 4px 1px black;
+      cursor: pointer;
+    }
+
+  /*
   -------------------------
     TIC TAC TOE
   -------------------------
@@ -91,7 +131,8 @@
     .gameboard {
       margin-top: 10px;
       position: absolute;
-      left: 44%;
+      left: 50%;
+      transform: translate(-50%);
     }
 
     .gameboard .column-elements {
@@ -102,12 +143,7 @@
       font-size: 20px;
     }
 
-    .gameboard .row-elements {
-      display: flex;
-      gap: 1px;
-    }
-
-     /*
+  /*
   -------------------------
     SNAKE GAME
   -------------------------

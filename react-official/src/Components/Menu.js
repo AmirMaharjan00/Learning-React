@@ -1,31 +1,29 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 export default function Menu () {
-    return(
+    return (
         <>
             <div className='nav-menu'>
-                <NavMenu/>
+                <ul className='menu-list'>
+                    <li className='menu-item'><Link to="/home">Home</Link></li>
+                    <li className='menu-item'><Link to="/games">Games</Link></li>
+                    <li className='menu-item'><Link to="/about">About</Link></li>
+                    <li className='menu-item'><Link to="/practice">Practice</Link></li>
+                </ul>
                 <LiveSearch/>
             </div>
         </>
     );
 }
 
-const NavMenu = () => {
-    return(
-        <ul className='menu-list'>
-            <li className='menu-item'><a href=''>Home</a></li>
-            <li className='menu-item'><a href=''>Games</a></li>
-            <li className='menu-item'><a href=''>Practices</a></li>
-        </ul>
-    );
-}
-
 const LiveSearch = () => {
-    return(
-        <div className='live-search'>
-            <input type="text" placeholder='Search...' />
-            <button>Search</button>
-        </div>
+    return (
+        <>
+            <div className='live-search'>
+                <input type="text" placeholder='Search ...' />
+                <button>Search</button>
+            </div>
+        </>
     );
 }

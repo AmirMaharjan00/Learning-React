@@ -1,12 +1,10 @@
 import './App.css';
-import Menu from './Components/Menu'
-import Games from './Components/Games'
+import Home from './Components/FrontPage'
 
 function App() {
   return (
-    <>      
-      <Menu/>
-      <Games/>
+    <>
+      <Home/>
     </>
   );
 }

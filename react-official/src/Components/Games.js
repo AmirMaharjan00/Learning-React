@@ -1,131 +1,163 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState, useRef } from 'react'
+import SnakeGameImage from '../Assets/snake-game.jpg'
+import TicTacToeImage from '../Assets/tic-tac-toe.png'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Content from './FrontPage'
 
-export default function Games() {
+export default function Games () {
+    const imageArray = [ { TicTacToeImage }, { SnakeGameImage } ]
+    // const LoopedImages = () => {
+    //     let imageHtml = []
+    //     if( typeof imageArray != 'null' ) {
+    //         imageArray.forEach(function( currentValue ){
+    //             imageHtml.push('<div><img src="'+ currentValue +'"></div>')
+    //         })
+    //     }
+    //     return imageHtml;
+    // }
     return (
         <>
-            <div className='root-body'>
-                <TicTacToe/>
-                <SnakeGame/>
+            <div className='games'>
+                <figure className='game-thumb-wrap'> 
+                    <img src={ TicTacToeImage } className="game-thumb" />
+                    <Link to='/games/tic-tac-toe' className='play-label'>Play</Link>
+                </figure>
+                <figure className='game-thumb-wrap'> 
+                    <img src={ SnakeGameImage } className="game-thumb" />
+                    <Link to='/games/snakegame' className='play-label'>Play</Link>
+                </figure>
             </div>
         </>
     );
 }
 
-function TicTacToe () {
-    const [ showGameBoard, setShowGameBoard ] = useState('hide');
-    const [ numberOfRow, setNumberOfRow ] = useState(3);
-    const [ numberOfColumn, setNumberOfColumn ] = useState(3);
-    const [ click, setClick ] = useState('notActive')
-    const [ cellElement, setCellElement ] = useState('')
-    
+export const TicTacToe = () => {
+    const [ showGameBoard, setShowGameBoard ] = useState( 'hide' );
+    const [ afterMath, setAfterMath ] = useState('');
     const StartGame = () => {
-        const startGameFunc = () => {
+        const StartGameOnClick = () => {
             if( {showGameBoard}.showGameBoard == 'hide' ) {
-                setShowGameBoard('show')
+                setShowGameBoard( 'show' )
             }
         }
-        return (
-            <>
-                <div className='start-game game-action' onClick={startGameFunc}>
-                    <span className='start-game-label'>Start Game</span>
-                </div>
-            </>
-        )
+        return(
+            <div className='start-game game-action' onClick={ StartGameOnClick }>
+                <span className='start-game-label'>Start Game</span>
+            </div>
+        );
     }
+
     const ResetGame = () => {
-        const resetGameFunc = () => {
-            let gameBoardCellValues = document.getElementsByClassName('column-elements')
-            Array.from( gameBoardCellValues ).forEach(function( currentValue ){
+        const ResetGameOnClick = () => {
+            let columnElements = document.getElementsByClassName('column-elements')
+            Array.from(columnElements).forEach(function( currentValue ){
                 currentValue.innerHTML = ''
                 currentValue.dataset.value = ''
-                currentValue.classList.add('notActive')
-                currentValue.classList.remove('active')
+                currentValue.dataset.row = ''
+                currentValue.dataset.column = ''
+                currentValue.dataset.diagonal = ''
             })
         }
-        return (
-            <>
-                <div className='reset-game game-action' onClick={resetGameFunc}>
-                    <span className='rest-game-label'>Reset Game</span>
-                </div>
-            </>
-        )
+        return(
+            <div className='reset-game game-action' onClick={ ResetGameOnClick }>
+                <span className='reset-game-label'>Reset Game</span>
+            </div>
+        );
     }
+
     const EndGame = () => {
-        const endGameFunc = () => {
+        const EndGameOnClick = () => {
             if( {showGameBoard}.showGameBoard == 'show' ) {
-                setShowGameBoard('hide')
+                setShowGameBoard( 'hide' )
             }
         }
-        return (
-            <>
-                <div className='end-game game-action' onClick={endGameFunc}>
-                    <span className='end-game-label'>End Game</span>
-                </div>
-            </>
-        )
+        return(
+            <div className='end-game game-action' onClick={ EndGameOnClick }>
+                <span className='end-game-label'>End Game</span>
+            </div>
+        );
     }
 
-    const GameBoard = ( props ) => {
-        if( {showGameBoard}.showGameBoard == 'hide' ) return;
-        let totalCell = {numberOfRow}.numberOfRow * {numberOfColumn}.numberOfColumn
-        let rowElements = ''
-        let gameBoardElement = document.getElementsByClassName('gameboard')
-        for( let i = 0; i < totalCell; i++ ) {
-            if( i % {numberOfRow}.numberOfRow == 0 ) rowElements += '<div class="row-elements">';
-            if( i % {numberOfRow}.numberOfRow == 0 ) rowElements += {}
-                rowElements += '<div class="column-elements"></div>';
-            if( i % {numberOfRow}.numberOfRow == 2 ) rowElements += '</div>';
-        }
-        let clickCount = 0
-        var getSiblings = function ( elem ) {
-            var siblings = [];
-            var sibling = elem.parentNode.firstChild;
-            var skipMe = elem;
-            for ( ; sibling; sibling = sibling.nextSibling ) 
-               if ( sibling.nodeType == 1 && sibling != skipMe )
-                  siblings.push( sibling );
-            return siblings;
-        }
-        const cellClik = ( event ) => {
-            let _thisClasslist = event.target.classList
-            if( _thisClasslist.contains('notActive') ) {
+    const GameBoard = () => {
+        if( {showGameBoard}.showGameBoard == 'hide' ) return
+        let forAfterMath = document.getElementsByClassName('tic-tac-toe-wrap')
+        const testNode = document.createElement('div')
+        const testNodeChild = document.createTextNode('yo yo')
+        testNode.appendChild(testNodeChild)
 
-                _thisClasslist.add('active')
-                _thisClasslist.remove('notActive')
+        let clickCount = 0, rowElementValue = []
+        const ticTacToeElementClick = ( event ) => {
+            if( event.target.classList.contains( 'isactive' ) ) return
 
-                // setting inner html
-                clickCount++
-                if( clickCount % 2 == 0 ) {
-                    event.target.innerHTML = 'X'
-                    event.target.dataset.value = 'x'
-                } else {
-                    event.target.innerHTML = 'O'
-                    event.target.dataset.value = 'o'
+            let _this = event.target, _thisDataset = _this.dataset, _thisClassList = _this.classList
+
+            _thisClassList.add( 'isactive' )
+            _thisClassList.remove( 'notActive' )
+            if( clickCount % 2 == 0 ) {
+                _this.innerHTML = 'X'
+                _this.value = 'x'
+            } else {
+                _this.value = 'o'
+                _this.innerHTML = 'O'
+            }
+            rowElementValue.push({
+                value: _this.value,
+                row: _thisDataset.row,
+                column: _thisDataset.column,
+                diagonal: _thisDataset.diagonal
+            })
+            clickCount++
+
+            let rowDecision = [], columnDecision = [], diagonalDecision = []
+            for( let i = 0; i < rowElementValue.length; i++ ) {
+                // for row
+                if( rowElementValue[i].value === _this.value && rowElementValue[i].row === _thisDataset.row ) {
+                    rowDecision.push(rowElementValue[i].value)
                 }
-                let clickedValue = event.target.dataset.value
-                let _thisDataSet = event.target.dataset
+
+                // for column
+                if( rowElementValue[i].value === _this.value && rowElementValue[i].column === _thisDataset.column ) {
+                    columnDecision.push( rowElementValue[i].value )
+                }
+
+                // for diagonal
+                if( rowElementValue[i].value === _this.value && rowElementValue[i].diagonal === _thisDataset.diagonal ) {
+                    diagonalDecision.push( rowElementValue[i].value )
+                }
+            }
+
+            let allElements = document.querySelectorAll('.column-elements')
+            if( rowDecision.length == 3 ) {
+                console.log('Player ' + rowDecision[0] + ' Wins' )
+            }
+            if( columnDecision.length == 3 ) {
+                console.log('Player ' + columnDecision[0] + ' Wins' )
+            }
+            if( diagonalDecision.length == 3 ) {
+                console.log('Player ' + diagonalDecision[0] + ' Wins' )
             }
         }
         return (
             <>
-                <div className='gameboard' align="center">
-                    <div className='row-elements'>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="1" data-value=""></div>
-                    </div>
-                    <div className='row-elements'>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="2"></div>
-                    </div>
-                    <div className='row-elements'>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
-                        <div className={`column-elements ${click}`} onClick={cellClik} data-row="3"></div>
-                    </div>
-                </div>
+                <table className='gameboard'>
+                    <tbody className='gameboard-body'>
+                        <tr className='row-elements'>
+                            <td className="column-elements notActive" data-row="1" data-column="1" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="1" data-column="2" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="1" data-column="3" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
+                        </tr>
+                        <tr className='row-elements'>
+                            <td className="column-elements notActive" data-row="2" data-column="1" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="2" data-column="2" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="2" data-column="3" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
+                        </tr>
+                        <tr className='row-elements'>
+                            <td className="column-elements notActive" data-row="3" data-column="1" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="3" data-column="2" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
+                            <td className="column-elements notActive" data-row="3" data-column="3" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
+                        </tr>
+                    </tbody>
+                </table>
             </>
         );
     }
@@ -134,124 +166,61 @@ function TicTacToe () {
         <>
             <div className='tic-tac-toe-wrap'>
                 <h1>Welcome to Tic Tac Toe</h1>
-                <div className='game'>
-                    <div className='game-action-wrap'>
-                        <StartGame/>
-                        <ResetGame/>
-                        <EndGame/>
-                    </div>
-                    <GameBoard/>
+                <div className='game-action-wrap'>
+                    <StartGame />
+                    <ResetGame />
+                    <EndGame />
                 </div>
+                <GameBoard />
             </div>
         </>
     );
 }
 
-const SnakeGame = () =>  {
-    const [ displayGameboard, setDisplayGameboard ] = useState('hide')
-
+export const SnakeGame = () => {
     const StartGame = () => {
-        const onStartClick = () => {
-            let gameBaordElement = document.querySelector('.snake-game-wrap .gameboard')
-            if( {displayGameboard}.displayGameboard == 'hide' ) {
-                setDisplayGameboard('show')
-            }
-        }
-        return (
-            <>
-                <div className='start-game game-action' onClick={onStartClick}>
-                    <span className='start-game-label'>Start Game</span>
-                </div>
-            </>
-        );
-    }
-    const ResetGame = () => {
-        const onResetClick = () => {
-            let gameBaordElement = document.querySelector('.snake-game-wrap .gameboard')
-            
-        }
-        return (
-            <>
-                <div className='reset-game game-action' onClick={onResetClick}>
-                    <span className='reset-game-label'>Reset Game</span>
-                </div>
-            </>
-        );
-    }
-    const EndGame = () => {
-        const onEndClick = () => {
-            if( {displayGameboard}.displayGameboard == 'show' ) {
-                setDisplayGameboard('hide')
-            }
-        }
-        return (
-            <>
-                <div className='end-game game-action' onClick={onEndClick}>
-                    <span className='end-game-label'>End Game</span>
-                </div>
-            </>
-        );
-    }
-    const GameBoard = () => {
-        if( {displayGameboard}.displayGameboard == 'hide' ) return
-        // if( {displayGameboard}.displayGameboard == 'show' ) {
-            
-            let test = '<h1>Amir</h1>'
-            let gameBoardElement = document.querySelector('.snake-game-wrap')
-            let snakeElement = gameBoardElement.querySelector('.snake-game-wrap .snake')
-            console.log( snakeElement ) 
-            // console.log( snakeElement && snakeElement.dataset ) 
-        // }
-        // let rightMove = snakeElement.dataset.right, upMove = snakeElement.dataset.upMove
-        let rightMove = 0, upMove = 0
-        // console.log( rightMove )
-        window.onkeydown = ( event ) => {
-            if( rightMove <= 3 ) rightMove = 3;
-            if( rightMove >= 225 ) rightMove = 225;
-            if( upMove <= 3 ) upMove = 3;
-            if( upMove >= 195 ) upMove = 195;
-            let snake = document.querySelector('.snake')
-            switch( event.keyCode ) {
-                case 38:
-                    snake.style.top = (upMove--) + 'px'
-                    break;
-                case 40:
-                    snake.style.top = (upMove++) + 'px'
-                    break;
-                case 37:
-                    snake.style.left = (rightMove--) + 'px'
-                    break;
-                case 39:
-                    snake.style.left = (rightMove++) + 'px'
-                    break;
-            }
+        const StartGameOnClick = () => {
+
         }
         return(
-            <>
-                <div className='gameboard'>
-                    <div className='gameboard-inner'>
-                        <span className='snake' data-right="0" data-up="0"></span>
-                    </div>
-                    <div className='game-control'>
-                    </div>
-                </div>
-            </>
+            <div className='start-game game-action' onClick={ StartGameOnClick }>
+                <span className='start-game-label'>Start Game</span>
+            </div>
         );
     }
+
+    const ResetGame = () => {
+        const ResetGameOnClick = () => {
+
+        }
+        return(
+            <div className='reset-game game-action' onClick={ ResetGameOnClick }>
+                <span className='reset-game-label'>Reset Game</span>
+            </div>
+        );
+    }
+
+    const EndGame = () => {
+        const EndGameOnClick = () => {
+
+        }
+        return(
+            <div className='end-game game-action' onClick={ EndGameOnClick }>
+                <span className='end-game-label'>End Game</span>
+            </div>
+        );
+    }
+
     return (
         <>
             <div className='snake-game-wrap'>
                 <h1>Welcome to Snake Game</h1>
-                <div className='game'>
-                    <div className='game-action-wrap'>
-                        <StartGame/>
-                        <ResetGame/>
-                        <EndGame/>
-                    </div>
-                    <GameBoard/>
+                <div className='game-action-wrap'>
+                    <StartGame />
+                    <ResetGame />
+                    <EndGame />
                 </div>
             </div>
         </>
     );
 }
-
