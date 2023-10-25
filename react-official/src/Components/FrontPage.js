@@ -1,6 +1,9 @@
 import React from 'react';
 import Menu from './Menu';
-import Games, { TicTacToe, SnakeGame } from './Games';
+import Games from './Games/Games';
+import SnakeGame from './Games/SnakeGame';
+import TicTacToe from './Games/TicTacToe';
+import TowerOfHanoi from './Games/TowerOFHanoi';
 import About from './About';
 import Practice from './Practice';
 import Home from './Home';
@@ -22,12 +25,13 @@ export const Content = () => {
         <>
             <div className='root-body'>
                 <Routes>
-                    <Route exact path="/home" element={ <Home/> }></Route>
+                    <Route exact path="/" element={ <Home/> }></Route>
                     <Route exact path="/games" element={ <Games/> }></Route>
                     <Route exact path="/about" element={ <About/> }></Route>
                     <Route exact path="/practice" element={ <Practice/> }></Route>
                     <Route exact path="/games/tic-tac-toe" element={ <TicTacToe/> }></Route>
                     <Route exact path="/games/snakegame" element={ <SnakeGame/> }></Route>
+                    <Route exact path="/games/tower-of-hanoi" element={ <TowerOfHanoi/> }></Route>
                 </Routes>
             </div>
         </>

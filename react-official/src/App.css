@@ -72,8 +72,8 @@
     }
 
     .games .game-thumb {
-      height: 250px;
-      width: 350px;
+      height: 160px;
+      width: 250px;
       border-radius: 6px;
       margin-bottom: 5px;
     }
@@ -123,6 +123,8 @@
     .tic-tac-toe-wrap .end-game {
       background: red;
     }
+
+
 /*
 -------------------------
   GAMEBOARD
@@ -148,46 +150,86 @@
     SNAKE GAME
   -------------------------
   */
-  .snake-game-wrap h1 {
+    .snake-game-wrap h1 {
+      text-align: center;
+    }
+
+    .snake-game-wrap .gameboard-inner {
+      background-color: black;
+      height: 200px;
+      width: 230px;
+      padding: 3px;
+      position: relative;
+    }
+
+    .snake-game-wrap .game-action-wrap {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .snake-game-wrap .game-action {
+      padding: 10px;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .snake-game-wrap .start-game {
+      background: green;
+    }
+
+    .snake-game-wrap .reset-game {
+      background: blue;
+    }
+
+    .snake-game-wrap .end-game {
+      background: red;
+    }
+
+    .snake-game-wrap .snake {
+      height: 8px;
+      width: 8px;
+      background-color: white;
+      position: absolute;
+    }
+
+    /*
+  -------------------------
+    TOWER OF HANOI
+  -------------------------
+  */
+  .tower-of-hanoi-wrap h1 {
     text-align: center;
   }
 
-  .snake-game-wrap .gameboard-inner {
-    background-color: black;
-    height: 200px;
-    width: 230px;
-    padding: 3px;
-    position: relative;
-  }
-
-  .snake-game-wrap .game-action-wrap {
+  .tower-of-hanoi-wrap .game-action-wrap {
     display: flex;
     gap: 10px;
     justify-content: center;
   }
 
-  .snake-game-wrap .game-action {
+  .tower-of-hanoi-wrap .game-action {
     padding: 10px;
     border-radius: 3px;
     color: white;
     cursor: pointer;
   }
 
-  .snake-game-wrap .start-game {
+  .tower-of-hanoi-wrap .start-game {
     background: green;
   }
 
-  .snake-game-wrap .reset-game {
+  .tower-of-hanoi-wrap .reset-game {
     background: blue;
   }
 
-  .snake-game-wrap .end-game {
+  .tower-of-hanoi-wrap .end-game {
     background: red;
   }
 
-  .snake-game-wrap .snake {
-    height: 8px;
-    width: 8px;
-    background-color: white;
-    position: absolute;
+  .tower-of-hanoi-wrap .gameboard {
+    border: 1px solid black;
+    width: 310px;
+    height: 170px;
   }

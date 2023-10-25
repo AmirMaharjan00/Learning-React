@@ -6,7 +6,7 @@ export default function Menu () {
         <>
             <div className='nav-menu'>
                 <ul className='menu-list'>
-                    <li className='menu-item'><Link to="/home">Home</Link></li>
+                    <li className='menu-item'><Link to="/">Home</Link></li>
                     <li className='menu-item'><Link to="/games">Games</Link></li>
                     <li className='menu-item'><Link to="/about">About</Link></li>
                     <li className='menu-item'><Link to="/practice">Practice</Link></li>
