@@ -51,49 +51,48 @@
   }
 
   /*
-  ------------------------------
-  GAME GALLERY
-  ------------------------------
+    ------------------------------
+    GAME GALLERY
+    ------------------------------
   */
     .games {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      width: 100%;
       gap: 20px;
-      justify-content: center;
       margin-top: 30px;
     }
 
     .games .game-thumb-wrap {
       margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      box-shadow: 0px 0px 6px 0px black;
       padding: 10px;
-      margin: 0;
-      padding: 10px;
-      box-shadow: 0px 0px 8px -2px black;
-      border-radius: 6px;
     }
 
     .games .game-thumb {
-      height: 160px;
-      width: 250px;
-      border-radius: 6px;
-      margin-bottom: 5px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain ;
     }
 
     .games .play-label {
-      display: block;
+      text-decoration: none;
       background: grey;
       color: white;
       text-align: center;
-      padding: 7px;
-      font-size: 17px;
-      font-weight: 600;
-      box-shadow: 0 0 4px 1px black;
-      cursor: pointer;
+      padding: 10px;
+      box-shadow: 0 0 7px 0 black;
+      border-radius: 3px;
     }
 
   /*
-  -------------------------
-    TIC TAC TOE
-  -------------------------
+    -------------------------
+      TIC TAC TOE
+    -------------------------
   */
     .tic-tac-toe-wrap h1 {
       text-align: center;
@@ -126,9 +125,9 @@
 
 
 /*
--------------------------
-  GAMEBOARD
--------------------------
+  -------------------------
+    GAMEBOARD
+  -------------------------
 */
     .gameboard {
       margin-top: 10px;
@@ -146,9 +145,9 @@
     }
 
   /*
-  -------------------------
-    SNAKE GAME
-  -------------------------
+    -------------------------
+      SNAKE GAME
+    -------------------------
   */
     .snake-game-wrap h1 {
       text-align: center;
@@ -194,42 +193,78 @@
       position: absolute;
     }
 
-    /*
-  -------------------------
-    TOWER OF HANOI
-  -------------------------
+  /*
+    -------------------------
+      TOWER OF HANOI
+    -------------------------
   */
-  .tower-of-hanoi-wrap h1 {
-    text-align: center;
-  }
+    .tower-of-hanoi-wrap h1 {
+      text-align: center;
+    }
 
-  .tower-of-hanoi-wrap .game-action-wrap {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
+    .tower-of-hanoi-wrap .game-action-wrap {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
 
-  .tower-of-hanoi-wrap .game-action {
-    padding: 10px;
-    border-radius: 3px;
-    color: white;
-    cursor: pointer;
-  }
+    .tower-of-hanoi-wrap .game-action {
+      padding: 10px;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+    }
 
-  .tower-of-hanoi-wrap .start-game {
-    background: green;
-  }
+    .tower-of-hanoi-wrap .start-game {
+      background: green;
+    }
 
-  .tower-of-hanoi-wrap .reset-game {
-    background: blue;
-  }
+    .tower-of-hanoi-wrap .reset-game {
+      background: blue;
+    }
 
-  .tower-of-hanoi-wrap .end-game {
-    background: red;
-  }
+    .tower-of-hanoi-wrap .end-game {
+      background: red;
+    }
 
-  .tower-of-hanoi-wrap .gameboard {
-    border: 1px solid black;
-    width: 310px;
-    height: 170px;
-  }
+    .tower-of-hanoi-wrap .tower {
+      height: 120px;
+      width: 15px;
+      background-color: black;
+      display: grid;
+    }
+
+    .tower-of-hanoi-wrap .disk {
+      width: 50px;
+      background-color: red;
+    }
+
+    .tower-of-hanoi-wrap .gameboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) 60px;
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    .tower-of-hanoi-wrap .gameboard-elements {
+      grid-area: 1 / 1 / 2 / 3;
+      border: 1px solid black;
+      width: 310px;
+      height: 170px;
+      display: flex;
+      gap: 10px;
+      align-items: end;
+      justify-content: space-evenly;
+    }
+
+    .tower-of-hanoi-wrap .tower-elements {
+      grid-area: 2 / 1 / 2 / 3;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .tower-of-hanoi-wrap .disk-elements {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }

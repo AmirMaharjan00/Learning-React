@@ -4,11 +4,14 @@ export default function TicTacToe () {
     const [ showGameBoard, setShowGameBoard ] = useState( 'hide' );
 
     const StartGame = () => {
+        // on start game click 
         const StartGameOnClick = () => {
             if( {showGameBoard}.showGameBoard == 'hide' ) {
                 setShowGameBoard( 'show' )
             }
         }
+
+        // StartGame return
         return(
             <div className='start-game game-action' onClick={ StartGameOnClick }>
                 <span className='start-game-label'>Start Game</span>
@@ -17,6 +20,7 @@ export default function TicTacToe () {
     }
 
     const ResetGame = () => {
+        // on reset game click
         const ResetGameOnClick = () => {
             let columnElements = document.getElementsByClassName('column-elements')
             Array.from(columnElements).forEach(function( currentValue ){
@@ -27,6 +31,8 @@ export default function TicTacToe () {
                 currentValue.dataset.diagonal = ''
             })
         }
+
+        // ResetGame return
         return(
             <div className='reset-game game-action' onClick={ ResetGameOnClick }>
                 <span className='reset-game-label'>Reset Game</span>
@@ -35,11 +41,14 @@ export default function TicTacToe () {
     }
 
     const EndGame = () => {
+        // on end game click
         const EndGameOnClick = () => {
             if( {showGameBoard}.showGameBoard == 'show' ) {
                 setShowGameBoard( 'hide' )
             }
         }
+
+        // EndGame return
         return(
             <div className='end-game game-action' onClick={ EndGameOnClick }>
                 <span className='end-game-label'>End Game</span>
@@ -102,6 +111,8 @@ export default function TicTacToe () {
                 console.log('Player ' + diagonalDecision[0] + ' Wins' )
             }
         }
+
+        // GameBoard return
         return (
             <>
                 <table className='gameboard'>
@@ -127,6 +138,7 @@ export default function TicTacToe () {
         );
     }
 
+    // TicTacToe return
     return (
         <>
             <div className='tic-tac-toe-wrap'>
