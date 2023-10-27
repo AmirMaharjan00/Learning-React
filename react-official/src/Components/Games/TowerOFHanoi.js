@@ -51,42 +51,52 @@ export default function TowerOfHanoi () {
 
     const GameBoard = () => {
         if( ! {gameBoard}.gameBoard ) return
+        let disk = 4, tower = 3
 
         // returns disk html
-        const diskHtmlFunc = () => {
-            let disk = 4, diskHtml = [], diskElements = []
-            for( let i = 0; i < disk; i++ ) {
-                let htmlClassItems = 'disk disk-' + ( i + 1 )
-                let itemClass = 'disk-item disk-item-' + ( i + 1 )
-                diskHtml.push(<span className={ htmlClassItems }>{ ( i + 1 ) }</span>)
-                diskElements.push(<span className={ itemClass }>{ ( i + 1 ) }</span>)
-            }
-            return { html: diskHtml, elements: diskElements }
+        const DiskHtmlFunc = ( props ) => {
+            return ( props.html ) ? <span className={ props.class }>{ props.mainElement }</span> : <span className={ props.elementClass }>{ props.element }</span>
+        }
+        DiskHtmlFunc.defaultProps = {
+            html: false,
+            class: 'disk',
+            elementClass: 'disk-item'
         }
 
         // returns tower html
-        const TowerHtmlFunc = () => {
-            let tower = 3, towerHtml = [], towerElements = []
-            for( let i = 0; i < tower; i++ ) {
-                let classItems = 'tower tower-' + ( i + 1 )
-                let itemClass = 'tower-item tower-item' + ( i + 1 )
-                if( i == 0 ) {
-                    towerHtml.push(<div className={ classItems }>{ diskHtmlFunc().html }</div>)
-                } else {
-                    towerHtml.push(<div className={ classItems }></div>)
-                }
-                towerElements.push(<span className={ itemClass }>a</span>)
+        const TowerHtmlFunc = ( props ) => {
+            return ( props.html ) ? <div className={ props.class }>{ props.element }</div> : <span className={ props.elementClass }>a</span>
+        }
+
+        TowerHtmlFunc.defaultProps = {
+            html: false,
+            class: 'tower',
+            elementClass: 'tower-item'
+        }
+
+        // for unique key of component child
+        const uniqueKey = ( component = 'disk', forTowerHtml = false ) => {
+            let element = ( component == 'tower' ) ? tower : disk, keyArray = [], towerHTML = []
+            for( let i = 0; i < element; i++ ) {
+                keyArray.push({ key: i })
+                towerHTML.push( <DiskHtmlFunc mainElement={ i + 1 } html={ true }/> )
             }
-            return { html: towerHtml, elements: towerElements }
+            return ( forTowerHtml ) ? towerHTML : keyArray;
         }
 
         // GameBoard return
         return (
             <>
                 <div className='gameboard'>
-                    <div className='gameboard-elements'>{ TowerHtmlFunc().html }</div>
-                    <div className='disk-elements'>{ diskHtmlFunc().elements }</div>
-                    <div className='tower-elements'>{ TowerHtmlFunc().elements }</div>
+                    <div className='gameboard-elements'>
+                        { uniqueKey( 'tower' ).map((element) => <TowerHtmlFunc key={ element.key } html={ true } element={ (element.key == 0) ? uniqueKey('disk', true): '' }/> ) }
+                    </div>
+                    <div className='disk-elements'>
+                        { uniqueKey( 'disk' ).map((element) => <DiskHtmlFunc key={ element.key } element={element.key + 1}/> ) }
+                    </div>
+                    <div className='tower-elements'>
+                        { uniqueKey( 'tower' ).map((element) => <TowerHtmlFunc key={ element.key }/> ) }
+                    </div>
                 </div>
             </>
         );

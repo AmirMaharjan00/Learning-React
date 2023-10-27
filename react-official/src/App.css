@@ -156,7 +156,7 @@
     .snake-game-wrap .gameboard-inner {
       background-color: black;
       height: 200px;
-      width: 230px;
+      width: 100%;
       padding: 3px;
       position: relative;
     }
@@ -191,6 +191,23 @@
       width: 8px;
       background-color: white;
       position: absolute;
+    }
+
+    .snake-game-wrap .snake-food-wrap {
+      display: grid;
+      grid-template-columns: repeat( 10, 1fr );
+      grid-template-rows: repeat( 10, 1fr );
+      height: 100%;
+    }
+
+    .snake-game-wrap .food {
+      width: 30px;
+    }
+
+    .snake-game-wrap .snake-food {
+      background: red;
+      height: 8px;
+      width: 8px;
     }
 
   /*

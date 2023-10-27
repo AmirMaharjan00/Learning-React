@@ -4,12 +4,14 @@ export default function SnakeGame () {
     const [ gameBoard, setGameBoard ] = useState( 'hide' )
     
     const StartGame = () => {
+        // on start game click
         const StartGameOnClick = () => {
             if( {gameBoard}.gameBoard == 'hide' ) {
                 setGameBoard( 'show' )
             }
-
         }
+
+        // StartGame return
         return(
             <div className='start-game game-action' onClick={ StartGameOnClick }>
                 <span className='start-game-label'>Start Game</span>
@@ -18,9 +20,12 @@ export default function SnakeGame () {
     }
 
     const ResetGame = () => {
+        // on reset game click
         const ResetGameOnClick = () => {
 
         }
+
+        // ResetGame return
         return(
             <div className='reset-game game-action' onClick={ ResetGameOnClick }>
                 <span className='reset-game-label'>Reset Game</span>
@@ -29,11 +34,14 @@ export default function SnakeGame () {
     }
 
     const EndGame = () => {
+        // on end game click
         const EndGameOnClick = () => {
             if( {gameBoard}.gameBoard == 'show' ) {
                 setGameBoard( 'hide' )
             }
         }
+
+        // EndGame return
         return(
             <div className='end-game game-action' onClick={ EndGameOnClick }>
                 <span className='end-game-label'>End Game</span>
@@ -43,13 +51,15 @@ export default function SnakeGame () {
 
     const  GameBoard = () => {
         if( {gameBoard}.gameBoard == 'hide' ) return
+
+        // game movement algorithm 
         let upMove = 3, rightMove = 3
         let snake = document.getElementsByClassName('snake')
         window.onkeydown = function( event ) {
             if( upMove <= 3  ) upMove = 3
             if( upMove >= 195  ) upMove = 195
             if( rightMove <= 3  ) rightMove = 3
-            if( rightMove >= 225  ) rightMove = 225
+            if( rightMove >= 300  ) rightMove = 300
             switch( event.keyCode ) {
                 case 37 :   // left
                     snake[0].style.left = ( rightMove-- ) + 'px'
@@ -65,11 +75,33 @@ export default function SnakeGame () {
                     break;
             }
         }
+
+        // snake food
+        const SnakeFood = () => {
+            let numberOfRows = 10, numberOfColumn = 10, totalCells = numberOfRows * numberOfColumn, snakeFoodHtml = []
+            for( let i = 0; i < totalCells; i++ ) {
+                snakeFoodHtml.push({ key: i })
+            }
+            return snakeFoodHtml
+        }
+
+        const SnakeElement = ( props ) => {
+            return <span className={ props.class }></span>
+        }
+
+        let randomNumber = Math.floor( Math.random() * SnakeFood().length )
+
+        // GameBoard return
         return (
             <>
                 <div className='gameboard'>
                     <div className='gameboard-inner'>
-                        <span className='snake'></span>
+                        <div className='snake-wrap'>
+                            <span className='snake'></span>
+                        </div>
+                        <div className='snake-food-wrap'>
+                            { SnakeFood().map(( element ) => <SnakeElement key={ element.key } class={ (randomNumber == element.key) ? 'food snake-food' : 'food' } /> )}
+                        </div>
                     </div>
                 </div>
             </>
