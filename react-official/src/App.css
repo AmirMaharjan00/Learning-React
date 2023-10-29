@@ -4,7 +4,7 @@
   ------------------------
 */
 
-  * {
+  body {
     background-color: black;
     color: white;
   }
@@ -82,7 +82,7 @@
   --------------------------
 */
 
-  .nav-menu .logo {
+  .nav-menu .logo a{
     color: white;
     font-size: 30px;
     font-weight: 700;
@@ -370,9 +370,8 @@
     --------------------------
   */
     .root-body .login {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, 10%);
+      width: 40%;
+      margin: 0 auto;
       background: #01a2c742;
       padding: 15px 20px;
     }
@@ -384,6 +383,7 @@
 
     .login .form-group.form-meta {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
     }
 
@@ -399,6 +399,8 @@
       border: none;
       background: green;
       padding: 10px;
+      cursor: pointer;
+      color: white;
     }
 
     .login .form-register {
@@ -417,20 +419,14 @@
       padding: 5px;
     }
 
-    .login, 
-    .login .form-group,
-    .login .form-checkbox,
-    .login .forgot-password,
     .login .forgot-password a,
-    .login .forgot-password-label,
-    .login .form-register,
-    .login .sign-in-label,
-    .login .form-register .just-text,
-    .login .form-register .just-text a,
-    .login input,
-    .login label,
-    .login form,
-    .login .sign-in-info
-     {
-      background: #ffffff00;
+    .login .just-text a{
+      color: #01a2c7;
+      text-decoration: none;
+    }
+
+    .login-wrap .login-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
