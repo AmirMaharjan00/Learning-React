@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 export default function TicTacToe () {
     const [ showGameBoard, setShowGameBoard ] = useState( 'hide' );
+    const winner = useRef();
+    let winnerIsSet = false
 
     const StartGame = () => {
         // on start game click 
@@ -24,11 +26,15 @@ export default function TicTacToe () {
         const ResetGameOnClick = () => {
             let columnElements = document.getElementsByClassName('column-elements')
             Array.from(columnElements).forEach(function( currentValue ){
+                currentValue.classList.remove('isactive')
+                currentValue.classList.add('notActive')
                 currentValue.innerHTML = ''
                 currentValue.dataset.value = ''
                 currentValue.dataset.row = ''
                 currentValue.dataset.column = ''
                 currentValue.dataset.diagonal = ''
+                winner.current.innerHTML = ''
+                winnerIsSet = false
             })
         }
 
@@ -62,6 +68,7 @@ export default function TicTacToe () {
         let clickCount = 0, rowElementValue = []
         const ticTacToeElementClick = ( event ) => {
             if( event.target.classList.contains( 'isactive' ) ) return
+            if( winnerIsSet ) return
             let _this = event.target, _thisDataset = _this.dataset, _thisClassList = _this.classList
 
             // class toggle and html input
@@ -102,14 +109,45 @@ export default function TicTacToe () {
 
             // Deciding winner
             if( rowDecision.length == 3 ) {
-                console.log('Player ' + rowDecision[0] + ' Wins' )
+                winner.current.innerHTML = 'Player ' + rowDecision[0] + ' Wins'
+                winnerIsSet = true
             }
             if( columnDecision.length == 3 ) {
-                console.log('Player ' + columnDecision[0] + ' Wins' )
+                winner.current.innerHTML = 'Player ' + columnDecision[0] + ' Wins'
+                winnerIsSet = true
             }
             if( diagonalDecision.length == 3 ) {
-                console.log('Player ' + diagonalDecision[0] + ' Wins' )
+                winner.current.innerHTML = 'Player ' + diagonalDecision[0] + ' Wins'
+                winnerIsSet = true
             }
+        }
+
+        // unique keys
+        let numberOfRows = 3, numberOfColumns = 3, keyArray = []
+        const uniqueKey = () => {
+            for( let i = 0; i < numberOfRows; i++ ) {
+                keyArray.push({key: i})
+            }
+            return keyArray
+        }
+
+        // creating table rows with table data
+        const TableRow = ( props ) => {
+            let columnArray = [], diagonal
+            for( let i = 0; i < numberOfColumns; i++ ) {
+                if( props.row % 2 == 0 ) {
+                    diagonal = ( i % 2 != 0 ) ? 1 : 0
+                } else {
+                    diagonal = ( i % 2 == 0 ) ? 1 : 0
+                }
+                columnArray.push(<TableCell key={ i } row={props.row} column={i + 1} diagonal={ diagonal }/>)
+            }
+            return <tr className='row-elements'>{columnArray}</tr>
+        }
+
+        // creating table data
+        const TableCell = ( props ) => {
+            return <td className="column-elements notActive" data-row={props.row} data-column={props.column} data-value="" data-diagonal={props.diagonal} onClick={ ticTacToeElementClick }></td>
         }
 
         // GameBoard return
@@ -117,23 +155,10 @@ export default function TicTacToe () {
             <>
                 <table className='gameboard'>
                     <tbody className='gameboard-body'>
-                        <tr className='row-elements'>
-                            <td className="column-elements notActive" data-row="1" data-column="1" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="1" data-column="2" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="1" data-column="3" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
-                        </tr>
-                        <tr className='row-elements'>
-                            <td className="column-elements notActive" data-row="2" data-column="1" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="2" data-column="2" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="2" data-column="3" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
-                        </tr>
-                        <tr className='row-elements'>
-                            <td className="column-elements notActive" data-row="3" data-column="1" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="3" data-column="2" data-value="" data-diagonal="0" onClick={ ticTacToeElementClick }></td>
-                            <td className="column-elements notActive" data-row="3" data-column="3" data-value="" data-diagonal="1" onClick={ ticTacToeElementClick }></td>
-                        </tr>
+                        { uniqueKey().map((element) => <TableRow key={element.key} row={element.key + 1}/>) }
                     </tbody>
                 </table>
+                <span className='winner' ref={winner}></span>
             </>
         );
     }

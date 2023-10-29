@@ -17,6 +17,7 @@
 
   #root .root-body {
     margin: 0 200px;
+    position: relative;
   }
 /*
   -------------------------
@@ -362,3 +363,74 @@
     align-items: center;
     position: relative;
   }
+
+  /*
+    --------------------------
+    LOGIN
+    --------------------------
+  */
+    .root-body .login {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 10%);
+      background: #01a2c742;
+      padding: 15px 20px;
+    }
+
+    .login .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login .form-group.form-meta {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .login form input[type="text"] {
+      border: none;
+      background: white;
+      padding: 10px;
+      margin-top: 10px;
+      color: black;
+    }
+
+    .login form input[type="submit"] {
+      border: none;
+      background: green;
+      padding: 10px;
+    }
+
+    .login .form-register {
+      text-align: center;
+    }
+    
+    .login .sign-in-label {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .login .sign-in-label,
+    .login .sign-in-info {
+      display: block;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .login, 
+    .login .form-group,
+    .login .form-checkbox,
+    .login .forgot-password,
+    .login .forgot-password a,
+    .login .forgot-password-label,
+    .login .form-register,
+    .login .sign-in-label,
+    .login .form-register .just-text,
+    .login .form-register .just-text a,
+    .login input,
+    .login label,
+    .login form,
+    .login .sign-in-info
+     {
+      background: #ffffff00;
+    }
