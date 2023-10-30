@@ -6,6 +6,7 @@ import TicTacToe from './Games/TicTacToe';
 import TowerOfHanoi from './Games/TowerOFHanoi';
 import About from './About';
 import Practice from './Practice';
+import Login, { ForgotPassword, RegistrationForm } from './Practices/Login';
 import Home from './Home';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
@@ -32,6 +33,8 @@ export const Content = () => {
                     <Route exact path="/games/tic-tac-toe" element={ <TicTacToe/> }></Route>
                     <Route exact path="/games/snakegame" element={ <SnakeGame/> }></Route>
                     <Route exact path="/games/tower-of-hanoi" element={ <TowerOfHanoi/> }></Route>
+                    <Route exact path="/forgot-password" element={ <ForgotPassword/> }></Route>
+                    <Route exact path="/registration-form" element={ <RegistrationForm/> }></Route>
                 </Routes>
             </div>
         </>
