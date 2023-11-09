@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react'
+import React, { Component } from 'react'
 
 export default class Calculator extends Component {
     render() {
@@ -31,16 +31,12 @@ class Calculator_Elements extends Component {
         switch( operation ) {
             case '+':
                 return parseInt(firstNumber) + parseInt(secondNumber);
-                break;
             case '-':
                 return firstNumber - secondNumber;
-                break;
             case 'x':
                 return firstNumber * secondNumber;
-                break;
             case '/':
                 return firstNumber / secondNumber;
-                break;
         }
     }
 
@@ -66,7 +62,6 @@ class Calculator_Elements extends Component {
                     this.setState({pressedEqualsTo: false})
                     this.value = []
                     return
-                    break;
                 case 'del':
                     break;
             }
