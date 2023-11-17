@@ -4,6 +4,7 @@ import Games from './Games/Games';
 import SnakeGame from './Games/SnakeGame';
 import TicTacToe from './Games/TicTacToe';
 import TowerOfHanoi from './Games/TowerOFHanoi';
+import Test from './Games/test';
 import About from './About';
 import Practice from './Practice';
 import Login, { ForgotPassword, RegistrationForm } from './Practices/Login';
@@ -38,6 +39,7 @@ export const Content = () => {
                     <Route exact path="/registration-form" element={ <RegistrationForm/> }></Route>
                     <Route exact path="/practices/login" element={ <Login/> }></Route>
                     <Route exact path="/practices/calculator" element={ <Calculator/> }></Route>
+                    <Route exact path="/games/test" element={ <Test/> }></Route>
                 </Routes>
             </div>
         </>

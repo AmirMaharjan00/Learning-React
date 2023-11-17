@@ -20,6 +20,10 @@ export default function Games () {
                     <img src={ TowerOfHanoiImage } className="game-thumb" />
                     <Link to='/games/tower-of-hanoi' className='play-label'>Play</Link>
                 </figure>
+                <figure className='game-thumb-wrap'> 
+                    <img src={ TicTacToeImage } className="game-thumb" />
+                    <Link to='/games/test' className='play-label'>Play</Link>
+                </figure>
             </div>
         </>
     );

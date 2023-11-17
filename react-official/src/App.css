@@ -163,14 +163,15 @@
     text-align: center;
   }
 
-  .tic-tac-toe-wrap .game-action-wrap {
+  .tic-tac-toe-wrap .game-action-wrap,
+  .tic-tac-toe-wrap .game-actions {
     display: flex;
     gap: 10px;
     justify-content: center;
   }
 
   .tic-tac-toe-wrap .game-action {
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 3px;
     color: white;
     cursor: pointer;
@@ -202,7 +203,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    background: white;
+    background: grey;
   }
 
   .gameboard .column-elements {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
 export default function TicTacToe () {
     const [ action, setAction ] = useState(null)
@@ -36,7 +36,7 @@ const GameAction = ( { label, onTouch } ) => {
 
 const GameBoard = () => {
     const [ string, setString ] = useState()
-    const [ count, setCount ] = useState(0)
+    const [ turn, setTurn ] = useState(true)
     const TableRow = () => {
         return (
             <tr>
@@ -49,13 +49,11 @@ const GameBoard = () => {
 
     const TableColumn = () => {
         const handleCellClick = (event) => {
-            console.log(  )
-            if( count % 2 == 0 ) event.target.innerHTML = 'X'
-            if( count % 2 != 0 ) event.target.innerHTML = 'O'
-            setCount( count+1 )
+            console.log( event )
+            // setTurn( turn ? false : true )
         }
         return (
-            <td className='column-elements' onClick={ handleCellClick }></td>
+            <td className='column-elements' onClick={(event) => handleCellClick(event) }></td>
         );
     }
 
