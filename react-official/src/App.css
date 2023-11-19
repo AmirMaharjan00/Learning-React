@@ -550,7 +550,7 @@ REGISTRATION FORM
 CALCULATOR
 --------------------------
 */
-  .practices-wrap .calculator {
+  .root-body .calculator {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -560,14 +560,14 @@ CALCULATOR
     margin: 0 auto;
   }
 
-  .practices-wrap .calculator-display {
+  .calculator .calculator-display {
     width: 100%;
     background: #01a2c742;
     height: 60px;
     border-radius: 5px;
   }
 
-  .practices-wrap .calculator-element {
+  .calculator .calculator-element {
     background: #01a2c742;
     width: 100%;
     padding: 10px 0;
@@ -604,3 +604,163 @@ CALCULATOR
     border-radius: 5px;
     text-align: center;
   }
+
+  /*
+  -------------------------
+  PRACTICE
+  -------------------------
+  */
+    .practices-wrap .items-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .items-wrap .item {
+      list-style: none;
+      padding: 10px;
+      margin-bottom: 5px;
+      background-color: #01a2c7;
+      width: 30%;
+    }
+
+    .items-wrap .item {
+      text-decoration: none;
+      color: white;
+    }
+
+    .items-wrap .item:hover{
+      font-weight: 700;
+    }
+
+    .items-wrap .item:hover {
+      background: #05bfea;
+    }
+
+  /*
+  ----------------------
+  TO DO APP
+  ----------------------
+  */
+    .root-body .to-do-app-wrap {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      width: 40%;
+    }
+
+    .to-do-app-wrap h2.title {
+      text-align: center;
+    }
+
+    .to-do-app-wrap .to-do-body input[type="text"]{
+      width: 96%;
+      padding: 10px;
+    }
+
+    .to-do-app-wrap .to-do-footer {
+      display: flex;
+      gap: 15px;
+      padding: 10px;
+      background-color: #5a875a59;
+    }
+
+    .to-do-footer .infos {
+      display: flex;
+      gap: 10px;
+      flex: 1 1 50%;
+      align-items: center;
+    }
+
+    .to-do-footer .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .to-do-footer .action,
+    .to-do-footer .info {
+      cursor: pointer;
+    }
+
+    .to-do-footer .action {
+      border-radius: 3px;
+      background: transparent;
+      border: 1px solid #ffffff47;
+      padding: 5px 10px;
+    }
+
+    .to-do-footer .action:hover {
+      color: #02b2b2;
+      background: #00000070;
+    }
+
+    .to-do-footer .action.active {
+      color: pink;
+      border-radius: 3px;
+      background: transparent;
+      border: 1px solid black;
+      padding: 5px 10px;
+    }
+
+    .to-do-footer .info:hover {
+      color: #02b2b2;
+      background: #00000070;
+    }
+
+    .to-do-footer .info,
+    .to-do-footer .count {
+        font-size: 14px;
+    }
+
+    .to-do-footer .add,
+    .to-do-footer .search {
+      border-radius: 3px;
+      background: transparent;
+      border: 1px solid #ffffff47;
+      padding: 5px 10px;
+    }
+
+    .to-do-app-wrap .search-popup {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .search-popup input[type="text"] {
+      width: inherit;
+      padding: 6px;
+    }
+
+/*
+--------------------
+SNAPSHOT
+--------------------
+*/
+  .root-body .snapshot-wrap {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  .snapshot-inner .gallery-categories {
+    display: flex;
+    justify-content: center;
+  }
+
+  .snapshot-inner .search-bar input {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .snapshot-inner .category {
+    padding: 5px 10px;
+    background-color: #01a2c7;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .snapshot-inner .category:hover {
+    background-color: #00c0ed;
+  }
+
+    

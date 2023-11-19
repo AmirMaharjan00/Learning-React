@@ -12,11 +12,28 @@ export default function Practice () {
 }
 
 const DivStructureForPractice = () => {
-     
+    const list = [
+        {
+            label: 'Calculator',
+            link: '/practices/calculator'
+        },
+        {
+            label: 'Login',
+            link: '/practices/login'
+        },
+        {
+            label: 'To Do App',
+            link: '/Practices/to-do-list'
+        },
+        {
+            label: 'Snapshot',
+            link: '/Practices/snapshot'
+        }
+    ] 
     return (
         <>
-            <ul className='itemwrap'>
-                { list.map((element, index) => { return <li className='item' key={index}><Link to={element.link}><span className='label'>{element.label}</span><span className='icon'><i className='fas fa-plus'></i></span></Link></li> }) }
+            <ul className='items-wrap'>
+                { list.map((element, index) => { return <Link to={element.link} key={index} className='item'><span className='label'>{element.label}</span></Link> }) }
             </ul>
         </>    
     );

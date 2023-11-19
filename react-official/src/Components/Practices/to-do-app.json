@@ -1,0 +1,19 @@
+{
+    "attributes": [
+        {
+            "label": "Learn JavaScript",
+            "active": true,
+            "completed": false
+        },
+        {
+            "label": "Learn React",
+            "active": true,
+            "completed": false
+        },
+        { 
+            "label": "Learn to Build a React App",
+            "active": true,
+            "completed": false
+        }
+    ]
+}
