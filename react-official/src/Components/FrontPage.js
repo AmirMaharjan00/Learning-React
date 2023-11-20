@@ -10,7 +10,9 @@ import Practice from './Practice';
 import Login, { ForgotPassword, RegistrationForm } from './Practices/Login';
 import Calculator from './Practices/Calculator';
 import ToDoList from './Practices/to-do-list';
+import ToDoListReplica from './Practices/to-do-list-replica';
 import Snapshot from './Practices/snapshot';
+import LearnApi from './Practices/learn-api';
 import Home from './Home';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
@@ -44,6 +46,8 @@ export const Content = () => {
                     <Route exact path="/practices/calculator" element={ <Calculator/> }></Route>
                     <Route exact path="/Practices/to-do-list" element={ <ToDoList/> }></Route>
                     <Route exact path="/Practices/snapshot" element={ <Snapshot /> }></Route>
+                    <Route exact path="/Practices/learn-api" element={ <LearnApi /> }></Route>
+                    <Route exact path="/Practices/to-do-list-replica" element={ <ToDoListReplica /> }></Route>
                 </Routes>
             </div>
         </>

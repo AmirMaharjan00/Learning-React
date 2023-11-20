@@ -763,4 +763,14 @@ SNAPSHOT
     background-color: #00c0ed;
   }
 
+/*
+-------------------------
+LEARN API
+-------------------------
+*/
+  .root-body .lean-api-wrap {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+  }
     

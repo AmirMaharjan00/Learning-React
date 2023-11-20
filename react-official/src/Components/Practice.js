@@ -28,6 +28,14 @@ const DivStructureForPractice = () => {
         {
             label: 'Snapshot',
             link: '/Practices/snapshot'
+        },
+        {
+            label: 'Learn Api',
+            link: '/Practices/learn-api'
+        },
+        {
+            label: 'To Do App Replica',
+            link: '/Practices/to-do-list-replica'
         }
     ] 
     return (
