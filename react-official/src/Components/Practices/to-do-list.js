@@ -77,7 +77,7 @@ export default function ToDoList () {
                         filteredValue.map((element, index) => {
                             return (
                                 <p key={index} className='to-do-field checkbox-field'>
-                                    <input type='checkbox' onKeyDown={() => handleCheckboxChange(index) } />
+                                    <input type='checkbox' onChange={() => handleCheckboxChange(index) } />
                                     <label>{ element.label }</label>
                                 </p>    
                             )
