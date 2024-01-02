@@ -1,0 +1,11 @@
+.swt-section {
+    display: flex;
+}
+
+.swt-sidebar {
+    flex: 0 0 30%;
+}
+
+.swt-content {
+    flex: 0 0 70%;
+}
