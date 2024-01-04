@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './sidebar'
-import AdminContent from './admin-content'
+import './main.css'
 import Posts from './posts'
 import Media from './media'
 import Pages from './pages'
@@ -12,9 +12,8 @@ function App() {
       <Router>
         <div className='swt-dashboard' id='swt-dashboard'>
           <Sidebar/>
-          <AdminContent/>
+          <Links/>
         </div>
-        <Links/>
       </Router>
     </>  
   );

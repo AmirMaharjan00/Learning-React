@@ -7,9 +7,9 @@ export default function AdminContent ( props ) {
     return (
         <>
             <div className='swt-admin-content' id='swt-admin-content'>
-                <Posts/>
+                {/* <Posts/>
                 <Media/>
-                <Pages/>
+                <Pages/> */}
             </div>
         </>
     );

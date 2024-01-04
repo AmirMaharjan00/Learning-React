@@ -7,7 +7,7 @@ const swtGetSidebar = () => {
         { 'label': 'Media', 'slug': 'media', 'id': '2', 'link': '/media' },
         { 'label': 'Pages', 'slug': 'pages', 'id': '3', 'link': '/pages' }
     ]
-    let sidebar = sidebarDetails.map(( element, index ) => { return <li key={ index } className='sidebar-item'><Link to={ element.link }>{ element.label }</Link></li> })
+    let sidebar = sidebarDetails.map(( element, index ) => { return <Link key={ index } to={ element.link } className='sidebar-item'><li className='sidebar-list-item'>{ element.label }</li></Link> })
     return sidebar
 }
 
