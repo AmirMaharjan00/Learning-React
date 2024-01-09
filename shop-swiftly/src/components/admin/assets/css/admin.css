@@ -1,0 +1,51 @@
+/*
+==========================
+DASHBOARD
+==========================
+*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #root #swt-dashboard {
+        display: flex;
+    }
+
+    /*========= SIDEBAR ===========*/
+    #swt-dashboard .swt-admin-sidebar {
+        flex: 0 1 20%;
+        background: #ffa5a56b;
+        padding: 10px;
+    }
+
+    /*=========== SIDEBAR HEAD =============*/
+    .swt-admin-sidebar .sidebar-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+
+    /*=========== SIDEBAR BODY =============*/
+    .swt-admin-sidebar .sidebar-body .sidebar-item {
+        list-style: none;
+        padding: 15px;
+        font-size: 20px;
+        color: #646464;
+    }
+
+    .swt-admin-sidebar .sidebar-body .sidebar-item:not(:last-child) {
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .swt-admin-sidebar .sidebar-body .sidebar-item:hover {
+        background: #ffa5a56b;
+        cursor: pointer;
+        color: #000000;
+    }
+
+    /*========= ADMIN MAIN ==========*/
+    #swt-dashboard .swt-admin-main {
+        flex: 0 1 80%;
+    }
