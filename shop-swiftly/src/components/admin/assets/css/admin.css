@@ -28,6 +28,10 @@ DASHBOARD
     }
 
     /*=========== SIDEBAR BODY =============*/
+    .swt-admin-sidebar .sidebar-body .sidebar-items a {
+        text-decoration: none;
+    }
+
     .swt-admin-sidebar .sidebar-body .sidebar-item {
         list-style: none;
         padding: 15px;
@@ -48,4 +52,26 @@ DASHBOARD
     /*========= ADMIN MAIN ==========*/
     #swt-dashboard .swt-admin-main {
         flex: 0 1 80%;
+        padding: 15px;
+    }
+
+    /*========= PRODUCTS =============*/
+    .swt-admin-main .admin-products .page-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .admin-products .page-head .date-search-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .admin-products .page-status .status-list {
+        display: flex;
+        gap: 10px;
+    }
+
+    .admin-products .page-status .status-item {
+        list-style: none;
     }

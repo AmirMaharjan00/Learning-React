@@ -1,23 +1,11 @@
 import React from 'react'
-import Dashboard from './components/admin/dashboard'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Admin from './components/admin/dashboard'
 
 function App() {
   return (
     <>
-      <Router>
-          <Dashboard/>
-          <Links/>
-      </Router>
+        <Admin/>
     </>  
-  );
-}
-
-const Links = () => {
-  return (
-    <Routes>
-      
-    </Routes>
   );
 }
 
