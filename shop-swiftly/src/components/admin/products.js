@@ -30,6 +30,28 @@ export default function Products () {
                         }  
                     </ul>
                 </div>
+                <div className='products-wrap'>
+                    <ul className='products-element products-table-head'>
+                        <li className='head-item'>Sno</li>
+                        <li className='head-item'>Title</li>
+                        <li className='head-item'>Stock</li>
+                        <li className='head-item'>Price</li>
+                        <li className='head-item'>Category</li>
+                        <li className='head-item'>Tag</li>
+                        <li className='head-item'>Date</li>
+                        <li className='head-item'>Action</li>
+                    </ul>
+                    <ul className='products-element products-table-body'>
+                        <li className='body-item'>1</li>
+                        <li className='body-item'>Title 1</li>
+                        <li className='body-item'>100</li>
+                        <li className='body-item'>Rs 1000</li>
+                        <li className='body-item'>category 1</li>
+                        <li className='body-item'>Tag 1</li>
+                        <li className='body-item'>2023/10/10</li>
+                        <li className='body-item'>:</li>
+                    </ul>
+                </div>
             </div>
         </>
     );

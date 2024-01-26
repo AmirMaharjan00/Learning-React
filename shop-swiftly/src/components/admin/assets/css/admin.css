@@ -67,6 +67,10 @@ DASHBOARD
         flex-direction: column;
     }
 
+    .admin-products .page-status {
+        margin-bottom: 10px;
+    }
+
     .admin-products .page-status .status-list {
         display: flex;
         gap: 10px;
@@ -74,4 +78,80 @@ DASHBOARD
 
     .admin-products .page-status .status-item {
         list-style: none;
+    }
+
+    .swt-admin-pages .products-element {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .products-element .head-item,
+    .products-element .body-item {
+        list-style: none;
+    }
+
+    .swt-admin-pages .products-element.products-table-head {
+        background: #ffa5a56b;
+        padding: 10px;
+    }
+
+    .products-element .head-item {
+        font-weight: 500;
+    }
+
+    /*================== LOGIN ==================*/
+    #swt-admin-login {
+        background: #ffa5a56b;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 30px;
+        box-shadow: 0px 0px 30px 5px #00000038;
+        width: 30%;
+        border-radius: 3px;
+    }
+
+    #swt-admin-login .form-field {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-family: system-ui;
+    }
+
+    #swt-admin-login .form-field label {
+        margin-bottom: 3px;
+    }
+
+    #swt-admin-login .form-field input {
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 8px;
+        margin-bottom: 6px;
+        border: 1px solid #00000057;
+        border-radius: 3px;
+    }
+
+    #swt-admin-login .form-field.form-button {
+        text-align: center;
+        
+    }
+
+    #swt-admin-login .form-field.form-button button {
+        width: 100%;
+        padding: 10px 30px;
+        background: #008000b8;
+        color: white;
+        border:none;
+        border-radius: 3px;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: system-ui;
+    }
+
+    #swt-admin-login .register-new-admin,
+    #swt-admin-login .forgot-password {
+        text-align: center
     }
