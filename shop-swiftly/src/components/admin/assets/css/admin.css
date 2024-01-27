@@ -118,6 +118,7 @@ DASHBOARD
         margin-bottom: 10px;
         font-size: 16px;
         font-family: system-ui;
+        font-weight: 500;
     }
 
     #swt-admin-login .form-field label {
@@ -155,3 +156,15 @@ DASHBOARD
     #swt-admin-login .forgot-password {
         text-align: center
     }
+
+    #swt-admin-login .register-new-admin a,
+    #swt-admin-login .forgot-password a {
+        text-decoration: none;
+    }
+
+    #swt-admin-login .register-new-admin a:hover,
+    #swt-admin-login .forgot-password a:hover {
+        color: green;
+    }
+
+    

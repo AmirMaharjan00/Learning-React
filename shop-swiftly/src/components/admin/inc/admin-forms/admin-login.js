@@ -1,7 +1,7 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 export default function AdminLogin() {
-    
     return (
         <div className='swt-admin-login' id='swt-admin-login'>
             <p className='form-field'>
@@ -13,13 +13,15 @@ export default function AdminLogin() {
                 <input type='text' name='admin-password' id='admin-password' />
             </p>
             <p className='form-field form-button'>
-                <button>LOGIN</button>
+                <button>
+                    <Link to='/swt-admin'>LOGIN</Link>
+                </button>
             </p>
             <p className='form-field forgot-password'>
-                <a href='#'>Forgot password ?</a>
+                <Link to='/swt-forgot-password'>Forgot password ?</Link>
             </p>
             <p className='form-field register-new-admin'>
-                <a href='#'>Register a new admin</a>
+                <Link to='/swt-registration'>Register a new admin</Link>
             </p>
         </div>
     );

@@ -11,10 +11,10 @@ export default function Admin() {
     return (
         <>
             <div className='swt-dashboard' id='swt-dashboard'>
-                <Router>
+                {/* <Router> */}
                     <Sidebar/>
                     <AdminMain/>
-                </Router>
+                {/* </Router> */}
             </div>
         </>
     );
@@ -51,14 +51,14 @@ const Sidebar = () => {
 const AdminMain = () => {
     return (
         <div className='swt-admin-main'>
-            <Routes>
+            {/* <Routes> */}
                 <Route exact path='/swt-admin' element={ <Dashboard/> }/>
                 <Route exact path='/swt-admin/pages' element={ <Pages/> }/>
                 <Route exact path='/swt-admin/media' element={ <Media/> }/>
                 <Route exact path='/swt-admin/products' element={ <Products/> }/>
                 <Route exact path='/swt-admin/settings' element={ <Settings/> }/>
                 <Route exact path='/swt-admin/users' element={ <Users/> }/>
-            </Routes>
+            {/* </Routes> */}
         </div>
     );
 }
