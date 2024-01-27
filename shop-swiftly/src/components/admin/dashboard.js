@@ -1,20 +1,15 @@
 import React from 'react'
-import Media from './media'
-import Pages from './pages'
-import Products from './products'
-import Settings from './settings'
-import Users from './users'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './assets/css/admin.css'
 
 export default function Admin() {
     return (
         <>
             <div className='swt-dashboard' id='swt-dashboard'>
-                {/* <Router> */}
-                    <Sidebar/>
-                    <AdminMain/>
-                {/* </Router> */}
+                <Sidebar/>
+                <div className='swt-admin-main'>
+                    <Outlet/>
+                </div>
             </div>
         </>
     );
@@ -48,22 +43,7 @@ const Sidebar = () => {
     );
 }
 
-const AdminMain = () => {
-    return (
-        <div className='swt-admin-main'>
-            {/* <Routes> */}
-                <Route exact path='/swt-admin' element={ <Dashboard/> }/>
-                <Route exact path='/swt-admin/pages' element={ <Pages/> }/>
-                <Route exact path='/swt-admin/media' element={ <Media/> }/>
-                <Route exact path='/swt-admin/products' element={ <Products/> }/>
-                <Route exact path='/swt-admin/settings' element={ <Settings/> }/>
-                <Route exact path='/swt-admin/users' element={ <Users/> }/>
-            {/* </Routes> */}
-        </div>
-    );
-}
-
-const Dashboard = () => {
+export const Dashboard = () => {
     return (
         <>
             <h2>Dashboard</h2>

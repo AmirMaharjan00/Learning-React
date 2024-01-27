@@ -1,9 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function AdminLogin() {
     return (
         <div className='swt-admin-login' id='swt-admin-login'>
+            <h2 className='title'>Login</h2>
             <p className='form-field'>
                 <label for='admin-username'>Username</label>
                 <input type='text' name='admin-username' id='admin-username' />
@@ -18,10 +19,10 @@ export default function AdminLogin() {
                 </button>
             </p>
             <p className='form-field forgot-password'>
-                <Link to='/swt-forgot-password'>Forgot password ?</Link>
+                <Link to='/swt-admin/swt-forgot-password'>Forgot password ?</Link>
             </p>
             <p className='form-field register-new-admin'>
-                <Link to='/swt-registration'>Register a new admin</Link>
+                <Link to='/swt-admin/swt-registration'>Register a new admin</Link>
             </p>
         </div>
     );
