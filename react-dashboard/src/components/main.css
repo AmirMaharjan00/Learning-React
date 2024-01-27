@@ -1,0 +1,116 @@
+/*================== LOGIN ==================*/
+#swt-admin-login {
+    background: #ffa5a56b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 5px #00000038;
+    width: 30%;
+    border-radius: 3px;
+}
+
+#swt-admin-login .form-field {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+
+#swt-admin-login .form-field label {
+    margin-bottom: 3px;
+}
+
+#swt-admin-login .form-field input {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #00000057;
+    border-radius: 3px;
+}
+
+#swt-admin-login .form-field.form-button {
+    text-align: center;
+}
+
+#swt-admin-login .form-field.form-button button {
+    width: 100%;
+    padding: 10px 30px;
+    background: #008000b8;
+    color: white;
+    border:none;
+    border-radius: 3px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: system-ui;
+}
+
+#swt-admin-login .register-new-admin,
+#swt-admin-login .forgot-password {
+    text-align: center
+}
+
+#swt-admin-login .register-new-admin a,
+#swt-admin-login .forgot-password a {
+    text-decoration: none;
+}
+
+#swt-admin-login .register-new-admin a:hover,
+#swt-admin-login .forgot-password a:hover {
+    color: green;
+}
+
+/*================= REGISTRATION ===============*/
+#swt-admin-registration  {
+    background: #ffa5a56b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 5px #00000038;
+    width: 30%;
+    border-radius: 3px;
+}
+
+#swt-admin-registration  .form-field {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-family: system-ui;
+    font-weight: 500;
+}
+
+#swt-admin-registration  .form-field label {
+    margin-bottom: 3px;
+}
+
+#swt-admin-registration  .form-field input {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #00000057;
+    border-radius: 3px;
+}
+
+#swt-admin-registration  .form-field.form-button {
+    text-align: center;
+}
+
+#swt-admin-registration  .form-field.form-button button {
+    width: 100%;
+    padding: 10px 30px;
+    background: #008000b8;
+    color: white;
+    border:none;
+    border-radius: 3px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: system-ui;
+}

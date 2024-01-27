@@ -1,18 +1,20 @@
 import React from 'react'
-import Header from './components/header/header';
-import Aside from './components/aside/aside';
-import Main from './components/main/main';
+import AdminLogin from './components/admin-login'
+import AdminForgotPassword from './components/admin-re-password'
+import AdminRegistration from './components/admin-registration'
+import './components/main.css'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <div className='amj-dashboard'>
-        <Header />
-        <div className='body'>
-          <Aside />
-          <Main />
-        </div>
-      </div>
+      <Router>
+        <Routes>
+            <Route exact path='/swt-login' Component={ AdminLogin }></Route>
+            <Route exact path='/swt-registration' Component={ AdminRegistration }></Route>
+            <Route exact path='/swt-forgot-password' Component={ AdminForgotPassword }></Route>
+        </Routes>
+      </Router>
     </>
   );
 }
