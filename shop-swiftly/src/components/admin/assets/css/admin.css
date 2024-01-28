@@ -102,7 +102,7 @@ DASHBOARD
 
     /*================== LOGIN ==================*/
     #swt-admin-login {
-        background: #ffa5a56b;
+        background: #ffa5a599;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -128,6 +128,17 @@ DASHBOARD
         font-weight: 500;
     }
 
+    #swt-admin-login .form-field .label-error-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #swt-admin-login .form-field .label-error-wrap .error-message {
+        margin-bottom: 3px;
+        color: red;
+    }
+
     #swt-admin-login .form-field label {
         margin-bottom: 3px;
     }
@@ -143,29 +154,25 @@ DASHBOARD
 
     #swt-admin-login .form-field.form-button {
         text-align: center;
-        
     }
 
-    #swt-admin-login .form-field.form-button button {
+    #swt-admin-login .form-field.form-button input[type=submit] {
         width: 100%;
         padding: 10px 30px;
         background: #008000b8;
         border:none;
         border-radius: 3px;
-    }
-
-    #swt-admin-login .form-field.form-button button:hover {
-        background: #02be02b8;
-    }
-
-    #swt-admin-login .form-field.form-button button a {
         text-decoration: none;
         color: white;
         font-size: 15px;
         letter-spacing: 2px;
         font-weight: 600;
         font-family: system-ui;
-        padding: inherit;
+        cursor: pointer;
+    }
+
+    #swt-admin-login .form-field.form-button input[type=submit]:hover {
+        background: #02be02b8;
     }
 
     #swt-admin-login .register-new-admin,
@@ -186,7 +193,7 @@ DASHBOARD
 
 /*================== REGISTRATION ==================*/
 #swt-admin-registration {
-    background: #ffa5a56b;
+    background: #ffa5a599;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -252,7 +259,7 @@ DASHBOARD
     
 /*================== FORGOT PASSWORD ==================*/
 #swt-admin-forgot-password {
-    background: #ffa5a56b;
+    background: #ffa5a599;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -315,4 +322,3 @@ DASHBOARD
     font-weight: 600;
     font-family: system-ui;
 }
-    
