@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Editor from './editor'
 
-export default function Products () {
+export default function Products ( { editorAddNew } ) {
+    const [ editorIsActive, setEditorIsActive ] = useState( false )
     let statusItems = [
         {'label': 'all'},
         {'label': 'published'},
         {'label': 'draft'},
         {'label': 'trash'}
     ]
+    
+    // handle add new button click
+    const handleAddNewClick = ( event ) => {
+        setEditorIsActive( editorIsActive ? false : true )
+        editorAddNew()
+    }
+
     let currentTime = new Date().toLocaleString()
     return (
         <>
             <div className='swt-admin-pages admin-products'>
+                <button className='product-add' onClick={ handleAddNewClick }>Add New</button>
                 <div className='page-head'>
                     <h2 className='page-title'>Products Management</h2>
                     <div className='date-search-wrap'>
@@ -53,6 +63,7 @@ export default function Products () {
                     </ul>
                 </div>
             </div>
+            { editorIsActive && <Editor editorClose={ handleAddNewClick } /> }
         </>
     );
 }

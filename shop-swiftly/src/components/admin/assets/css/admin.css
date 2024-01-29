@@ -12,11 +12,19 @@ DASHBOARD
         display: flex;
     }
 
+    #root .editor-overlay {
+        width: 100%;
+        position: absolute;
+        content: '';
+        background: #00000052;
+        height: 100%;
+    }
+
     /*========= SIDEBAR ===========*/
     #swt-dashboard .swt-admin-sidebar {
         flex: 0 1 20%;
         background: #ffa5a56b;
-        padding: 10px;
+        height: 100vh;
     }
 
     /*=========== SIDEBAR HEAD =============*/
@@ -55,7 +63,24 @@ DASHBOARD
         padding: 15px;
     }
 
-    /*========= PRODUCTS =============*/
+    /*========= PRODUCTS =============*/    
+    .swt-admin-main .admin-products .product-add {
+        border: 1px dashed blue;
+        background: transparent;
+        padding: 5px 10px;
+        color: blue;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .swt-admin-main .admin-products .product-add:hover {
+        border: 1px dashed rgba(255, 0, 123, 0.403);
+        background: rgba(0, 0, 0, 0.096);
+        color: rgba(255, 0, 123, 0.403);
+        font-weight: 600;
+    }
+
     .swt-admin-main .admin-products .page-head {
         display: flex;
         align-items: center;
@@ -190,135 +215,153 @@ DASHBOARD
         color: green;
     }
 
+/*================== EDITOR ========================*/
+    #swt-admin-editor {
+        position: absolute;
+        background: red;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #swt-admin-editor:before {
+        position: absolute;
+        content: '';
+    }
+
+    #swt-admin-editor .editor-area {
+        display: flex;
+    }
 
 /*================== REGISTRATION ==================*/
-#swt-admin-registration {
-    background: #ffa5a599;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 30px;
-    box-shadow: 0px 0px 30px 5px #00000038;
-    width: 30%;
-    border-radius: 3px;
-}
+    #swt-admin-registration {
+        background: #ffa5a599;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 30px;
+        box-shadow: 0px 0px 30px 5px #00000038;
+        width: 30%;
+        border-radius: 3px;
+    }
 
-#swt-admin-registration .title {
-    margin-bottom: 10px;
-    text-align: center;
-    font-family: system-ui;
-    font-weight: 700;
-}
+    #swt-admin-registration .title {
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: system-ui;
+        font-weight: 700;
+    }
 
-#swt-admin-registration .form-field {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-family: system-ui;
-    font-weight: 500;
-}
+    #swt-admin-registration .form-field {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-family: system-ui;
+        font-weight: 500;
+    }
 
-#swt-admin-registration .form-field label {
-    margin-bottom: 3px;
-}
+    #swt-admin-registration .form-field label {
+        margin-bottom: 3px;
+    }
 
-#swt-admin-registration .form-field input {
-    width: 100%;
-    padding: 10px 0;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    border: 1px solid #00000057;
-    border-radius: 3px;
-}
+    #swt-admin-registration .form-field input {
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 8px;
+        margin-bottom: 6px;
+        border: 1px solid #00000057;
+        border-radius: 3px;
+    }
 
-#swt-admin-registration .form-field.form-button {
-    text-align: center;
-}
+    #swt-admin-registration .form-field.form-button {
+        text-align: center;
+    }
 
-#swt-admin-registration .form-field.form-button button {
-    width: 100%;
-    padding: 10px 30px;
-    background: #008000b8;
-    border:none;
-    border-radius: 3px;
-}
+    #swt-admin-registration .form-field.form-button button {
+        width: 100%;
+        padding: 10px 30px;
+        background: #008000b8;
+        border:none;
+        border-radius: 3px;
+    }
 
-#swt-admin-registration .form-field.form-button button:hover {
-    background: #02be02b8;
-}
+    #swt-admin-registration .form-field.form-button button:hover {
+        background: #02be02b8;
+    }
 
-#swt-admin-registration .form-field.form-button button a {
-    text-decoration: none;
-    color: white;
-    font-size: 15px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    font-family: system-ui;
-}
+    #swt-admin-registration .form-field.form-button button a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: system-ui;
+    }
     
 /*================== FORGOT PASSWORD ==================*/
-#swt-admin-forgot-password {
-    background: #ffa5a599;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 30px;
-    box-shadow: 0px 0px 30px 5px #00000038;
-    width: 30%;
-    border-radius: 3px;
-}
+    #swt-admin-forgot-password {
+        background: #ffa5a599;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 30px;
+        box-shadow: 0px 0px 30px 5px #00000038;
+        width: 30%;
+        border-radius: 3px;
+    }
 
-#swt-admin-forgot-password .title {
-    margin-bottom: 10px;
-    text-align: center;
-    font-family: system-ui;
-    font-weight: 700;
-}
+    #swt-admin-forgot-password .title {
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: system-ui;
+        font-weight: 700;
+    }
 
-#swt-admin-forgot-password .form-field {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-family: system-ui;
-    font-weight: 500;
-}
+    #swt-admin-forgot-password .form-field {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-family: system-ui;
+        font-weight: 500;
+    }
 
-#swt-admin-forgot-password .form-field label {
-    margin-bottom: 3px;
-}
+    #swt-admin-forgot-password .form-field label {
+        margin-bottom: 3px;
+    }
 
-#swt-admin-forgot-password .form-field input {
-    width: 100%;
-    padding: 10px 0;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    border: 1px solid #00000057;
-    border-radius: 3px;
-}
+    #swt-admin-forgot-password .form-field input {
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 8px;
+        margin-bottom: 6px;
+        border: 1px solid #00000057;
+        border-radius: 3px;
+    }
 
-#swt-admin-forgot-password .form-field.form-button {
-    text-align: center;
-}
+    #swt-admin-forgot-password .form-field.form-button {
+        text-align: center;
+    }
 
-#swt-admin-forgot-password .form-field.form-button button {
-    width: 100%;
-    padding: 10px 30px;
-    background: #008000b8;
-    border:none;
-    border-radius: 3px;
-}
+    #swt-admin-forgot-password .form-field.form-button button {
+        width: 100%;
+        padding: 10px 30px;
+        background: #008000b8;
+        border:none;
+        border-radius: 3px;
+    }
 
-#swt-admin-forgot-password .form-field.form-button button:hover {
-    background: #02be02b8;
-}
+    #swt-admin-forgot-password .form-field.form-button button:hover {
+        background: #02be02b8;
+    }
 
-#swt-admin-forgot-password .form-field.form-button button a {
-    text-decoration: none;
-    color: white;
-    font-size: 15px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    font-family: system-ui;
-}
+    #swt-admin-forgot-password .form-field.form-button button a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+        letter-spacing: 2px;
+        font-weight: 600;
+        font-family: system-ui;
+    }

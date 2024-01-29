@@ -34,7 +34,7 @@ export default function AdminLogin() {
     return (
         <div className='swt-admin-login' id='swt-admin-login'>
             {/* <pre>{ JSON.stringify( rawInputs, undefined, 2 ) }</pre> */}
-            <form onSubmit={ handleOnSubmit } method='post'>
+            <form onSubmit={ handleOnSubmit } action='/swt-admin' method='get'>
                 <h2 className='title'>Login</h2>
                 <p className='form-field'>
                     <span className='label-error-wrap'>
