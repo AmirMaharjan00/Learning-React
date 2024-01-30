@@ -16,7 +16,7 @@ DASHBOARD
         width: 100%;
         position: absolute;
         content: '';
-        background: #00000052;
+        background: #000000a6;
         height: 100%;
     }
 
@@ -218,7 +218,7 @@ DASHBOARD
 /*================== EDITOR ========================*/
     #swt-admin-editor {
         position: absolute;
-        background: red;
+        background: #ffa5a5db;
         width: 80%;
         top: 50%;
         left: 50%;
@@ -231,7 +231,52 @@ DASHBOARD
     }
 
     #swt-admin-editor .editor-area {
+        display: grid;
+        grid-template-columns: 80% 20%;
+    }
+
+    #swt-admin-editor .editor-area .editor-main {
         display: flex;
+        flex-direction: column;
+        flex: 0 1 75%;
+        padding: 30px;
+    }
+
+    #swt-admin-editor .editor-main input,
+    #swt-admin-editor .editor-main textarea {
+        border: none;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+        background: transparent;
+        font-size: 20px;
+    }
+
+    #swt-admin-editor .editor-main input::placeholder {
+        color: white;
+    }
+
+    #swt-admin-editor .editor-sidebar {
+        text-align: center;
+        background: #ff000038;
+    }
+
+    #swt-admin-editor .editor-sidebar button {
+        width: 150px;
+        height: 40px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    #swt-admin-editor .sidebar-element {
+        background: #ff000038;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    #swt-admin-editor .sidebar-element:hover {
+        background: #5b222238;
     }
 
 /*================== REGISTRATION ==================*/
